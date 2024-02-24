@@ -1,8 +1,10 @@
-import React from 'react'
+import React from "react";
+import { Button } from "@mui/material";
+import { Helmet } from "react-helmet";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 
-import { Helmet } from 'react-helmet'
-
-import './tracking.css'
+import "./tracking.css";
 
 const Tracking = (props) => {
   return (
@@ -39,7 +41,7 @@ const Tracking = (props) => {
                     <div className="tracking-depth6-frame002">
                       <div className="tracking-depth7-frame0">
                         <span className="tracking-text02">
-                          <span>Generate chart</span>
+                          <Button variant="inherit">Generate Chart</Button>
                         </span>
                       </div>
                     </div>
@@ -48,7 +50,7 @@ const Tracking = (props) => {
                     <div className="tracking-depth6-frame003">
                       <div className="tracking-depth7-frame001">
                         <span className="tracking-text04">
-                          <span>Add application</span>
+                          <Button variant="inherited">Add Application</Button>
                         </span>
                       </div>
                     </div>
@@ -92,7 +94,7 @@ const Tracking = (props) => {
                       <div className="tracking-depth7-frame004">
                         <div className="tracking-depth8-frame02">
                           <span className="tracking-text08">
-                            <span>Download Models</span>
+                            <Button variant="inherit">Download Models</Button>
                           </span>
                         </div>
                       </div>
@@ -158,7 +160,9 @@ const Tracking = (props) => {
                     <div className="tracking-depth6-frame13">
                       <div className="tracking-depth7-frame011">
                         <span className="tracking-text16">
-                          <span>Search for roles or companies</span>
+                          <TextField variant="standard" fullWidth>
+                            Search for companies
+                          </TextField>
                         </span>
                       </div>
                     </div>
@@ -698,7 +702,7 @@ const Tracking = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Tracking
+export default Tracking;

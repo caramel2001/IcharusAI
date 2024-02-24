@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Button } from "@mui/material";
 import { Helmet } from "react-helmet";
 
 import "./home.css";
@@ -8,7 +8,7 @@ const Home = (props) => {
   return (
     <div className="home-container">
       <Helmet>
-        <title>Career Compass</title>
+        <title>Outlandish Past Hare</title>
         <meta property="og:title" content="Outlandish Past Hare" />
       </Helmet>
       <div className="home-landing">
@@ -37,23 +37,17 @@ const Home = (props) => {
                 <div className="home-depth4-frame01">
                   <div className="home-depth5-frame11">
                     <div className="home-depth6-frame002">
-                      <span className="home-text02">
-                        <span>Home</span>
-                      </span>
+                      <span className="home-text02"></span>
                     </div>
                   </div>
                   <div className="home-depth5-frame2">
                     <div className="home-depth6-frame003">
-                      <span className="home-text04">
-                        <span>Applications</span>
-                      </span>
+                      <span className="home-text04"></span>
                     </div>
                   </div>
                   <div className="home-depth5-frame3">
                     <div className="home-depth6-frame004">
-                      <span className="home-text06">
-                        <span>Jobs</span>
-                      </span>
+                      <span className="home-text06"></span>
                     </div>
                   </div>
                 </div>
@@ -62,7 +56,7 @@ const Home = (props) => {
                     <div className="home-depth6-frame005">
                       <div className="home-depth7-frame0">
                         <span className="home-text08">
-                          <span>Sign up</span>
+                          <Button variant="transparent">Sign Up</Button>
                         </span>
                       </div>
                     </div>
@@ -71,7 +65,7 @@ const Home = (props) => {
                     <div className="home-depth6-frame006">
                       <div className="home-depth7-frame01">
                         <span className="home-text10">
-                          <span>Log in</span>
+                          <Button variant="transparent">Log In </Button>
                         </span>
                       </div>
                     </div>
@@ -128,14 +122,14 @@ const Home = (props) => {
                           <div className="home-depth9-frame003">
                             <span className="home-text22">
                               <span>
-                                TalentTrove is an all-in-one job recommendation
-                                and application tracking tool that helps you get
-                                the job you want. It uses state-of-the-art AI to
-                                provide personalized job recommendations and
-                                allows you to track all of your applications in
-                                one place. TalentTrove is perfect for anyone
-                                looking for a new job, from recent grads to
-                                seasoned professionals.
+                                Career Compass is an all-in-one job
+                                recommendation and application tracking tool
+                                that helps you get the job you want. It uses
+                                state-of-the-art AI to provide personalized job
+                                recommendations and allows you to track all of
+                                your applications in one place. Career Compass
+                                is perfect for anyone looking for a new job,
+                                from recent grads to seasoned professionals.
                               </span>
                             </span>
                           </div>
@@ -225,7 +219,7 @@ const Home = (props) => {
                         <div className="home-depth8-frame05">
                           <div className="home-depth9-frame010">
                             <span className="home-text36">
-                              <span>Get started with TalentTrove</span>
+                              <span>Get started with Career Compass</span>
                             </span>
                           </div>
                         </div>
@@ -233,9 +227,9 @@ const Home = (props) => {
                           <div className="home-depth9-frame011">
                             <span className="home-text38">
                               <span>
-                                Sign up today to get early access to
-                                TalentTrove&apos;s all-in-one job recommendation
-                                and application tracking tool.
+                                Sign up today to get early access to Career
+                                Compass&apos;s all-in-one job recommendation and
+                                application tracking tool.
                               </span>
                             </span>
                           </div>
@@ -249,7 +243,9 @@ const Home = (props) => {
                             <div className="home-depth10-frame02">
                               <div className="home-depth11-frame04">
                                 <span className="home-text40">
-                                  <span>Setup Email</span>
+                                  <Button variant="transparent">
+                                    Setup Email
+                                  </Button>
                                 </span>
                               </div>
                             </div>

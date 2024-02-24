@@ -16,7 +16,7 @@ import NotFound from "./views/not-found";
 
 const App = () => {
   return (
-    <Recommendation />
+    <Tracking />
     // <Router>
     //   <Switch>
     //     <Route component={Home} exact path="/" />

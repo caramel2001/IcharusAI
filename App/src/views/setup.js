@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
+import { Button, TextField } from "@mui/material";
+import { Helmet } from "react-helmet";
 
-import { Helmet } from 'react-helmet'
-
-import './setup.css'
+import "./setup.css";
 
 const Setup = (props) => {
   return (
@@ -61,17 +61,12 @@ const Setup = (props) => {
                           <span>Name</span>
                         </span>
                       </div>
-                      <div className="setup-depth7-frame1">
-                        <div className="setup-depth8-frame0">
-                          <div className="setup-depth9-frame0">
-                            <div className="setup-depth10-frame0">
-                              <span className="setup-text08">
-                                <span>Your Name</span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        variant="filled"
+                        label="Name"
+                      />
                     </div>
                   </div>
                 </div>
@@ -83,17 +78,12 @@ const Setup = (props) => {
                           <span>Gmail</span>
                         </span>
                       </div>
-                      <div className="setup-depth7-frame11">
-                        <div className="setup-depth8-frame01">
-                          <div className="setup-depth9-frame01">
-                            <div className="setup-depth10-frame01">
-                              <span className="setup-text12">
-                                <span>you@example.com</span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        variant="filled"
+                        label="you@example.com"
+                      />
                     </div>
                   </div>
                 </div>
@@ -105,17 +95,12 @@ const Setup = (props) => {
                           <span>Gmail App Password</span>
                         </span>
                       </div>
-                      <div className="setup-depth7-frame12">
-                        <div className="setup-depth8-frame02">
-                          <div className="setup-depth9-frame02">
-                            <div className="setup-depth10-frame02">
-                              <span className="setup-text16">
-                                <span>Password</span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        variant="filled"
+                        label="Password"
+                      />
                     </div>
                   </div>
                 </div>
@@ -127,17 +112,12 @@ const Setup = (props) => {
                           <span>OpenAI API Key</span>
                         </span>
                       </div>
-                      <div className="setup-depth7-frame13">
-                        <div className="setup-depth8-frame03">
-                          <div className="setup-depth9-frame03">
-                            <div className="setup-depth10-frame03">
-                              <span className="setup-text20">
-                                <span>API Key</span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        variant="filled"
+                        label="API Key"
+                      />
                     </div>
                   </div>
                 </div>
@@ -152,17 +132,14 @@ const Setup = (props) => {
                           </span>
                         </span>
                       </div>
-                      <div className="setup-depth7-frame14">
-                        <div className="setup-depth8-frame04">
-                          <div className="setup-depth9-frame04">
-                            <div className="setup-depth10-frame04">
-                              <span className="setup-text24">
-                                <span>Write here...</span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        variant="filled"
+                        label="Write Here"
+                        multiline
+                        rows={4}
+                      />
                     </div>
                   </div>
                 </div>
@@ -173,7 +150,7 @@ const Setup = (props) => {
                         <div className="setup-depth8-frame05">
                           <div className="setup-depth9-frame05">
                             <span className="setup-text26">
-                              <span>Back</span>
+                              <Button variant="transparent">Back</Button>
                             </span>
                           </div>
                         </div>
@@ -184,7 +161,7 @@ const Setup = (props) => {
                         <div className="setup-depth8-frame06">
                           <div className="setup-depth9-frame06">
                             <span className="setup-text28">
-                              <span>Submit</span>
+                              <Button variant="inherit">Submit</Button>
                             </span>
                           </div>
                         </div>
@@ -198,7 +175,7 @@ const Setup = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Setup
+export default Setup;
