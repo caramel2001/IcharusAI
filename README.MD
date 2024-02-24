@@ -2,7 +2,7 @@
 
 ```
 # initate a ChromaDB
-python jobTracker/chromDB.py
+python jobTracker/chromaDB.py
 ```
 
 ## FastAPI Server
