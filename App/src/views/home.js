@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import "./home.css";
 
 const Home = (props) => {
+  console.log(props);
   return (
     <div className="home-container">
       <Helmet>
@@ -51,26 +52,45 @@ const Home = (props) => {
                     </div>
                   </div>
                 </div>
-                <div className="home-depth4-frame1">
-                  <div className="home-depth5-frame01">
-                    <div className="home-depth6-frame005">
-                      <div className="home-depth7-frame0">
-                        <span className="home-text08">
-                          <Button variant="transparent">Sign Up</Button>
-                        </span>
-                      </div>
-                    </div>
+                {/* <div className="home-depth4-frame1"> */}
+                {props.login ? (
+                  <div className="home-depth4-frame1">
+                    <Button
+                      variant="transparent"
+                      style={{ padding: "10px" }}
+                      onClick={() => props.history.push("/")}
+                    >
+                      Home
+                    </Button>
+                    <Button
+                      variant="transparent"
+                      style={{ padding: "10px" }}
+                      onClick={() => props.history.push("/tracking")}
+                    >
+                      Tracking
+                    </Button>
+                    <Button
+                      variant="transparent"
+                      style={{ padding: "10px" }}
+                      onClick={() => props.history.push("/recommendation")}
+                    >
+                      Recommendation
+                    </Button>
                   </div>
-                  <div className="home-depth5-frame12">
-                    <div className="home-depth6-frame006">
-                      <div className="home-depth7-frame01">
-                        <span className="home-text10">
-                          <Button variant="transparent">Log In </Button>
-                        </span>
-                      </div>
-                    </div>
+                ) : (
+                  <div className="home-depth4-frame1">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      style={{ padding: "10px" }}
+                      onClick={() => props.history.push("/setup")}
+                    >
+                      Setup Profile
+                    </Button>
                   </div>
-                </div>
+                )}
+
+                {/* </div> */}
               </div>
             </div>
             <div className="home-depth2-frame1">
@@ -237,21 +257,14 @@ const Home = (props) => {
                       </div>
                     </div>
                     <div className="home-depth6-frame11">
-                      <div className="home-depth7-frame08">
-                        <div className="home-depth8-frame06">
-                          <div className="home-depth9-frame012">
-                            <div className="home-depth10-frame02">
-                              <div className="home-depth11-frame04">
-                                <span className="home-text40">
-                                  <Button variant="transparent">
-                                    Setup Email
-                                  </Button>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ padding: "10px" }}
+                        onClick={() => props.history.push("/setup")}
+                      >
+                        Setup Profile
+                      </Button>
                     </div>
                   </div>
                 </div>

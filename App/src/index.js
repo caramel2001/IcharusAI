@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
@@ -15,18 +15,29 @@ import Recommendation from "./views/recommendation";
 import NotFound from "./views/not-found";
 
 const App = () => {
+  const [login, setLogin] = useState(false);
+
   return (
-    <Tracking />
-    // <Router>
-    //   <Switch>
-    //     <Route component={Home} exact path="/" />
-    //     <Route component={Setup} exact path="/setup" />
-    //     <Route component={Tracking} exact path="/tracking" />
-    //     <Route component={Recommendation} exact path="/recommendation" />
-    //     <Route component={NotFound} path="**" />
-    //     <Redirect to="**" />
-    //   </Switch>
-    // </Router>
+    // <Recommendation />
+    <Router>
+      <Switch>
+        <Route
+          component={(props) => <Home {...props} login={login} />}
+          exact
+          path="/"
+        />
+        {/* <Route component={Home} exact path="/" /> */}
+        <Route
+          component={(props) => <Setup {...props} setLogin={setLogin} />}
+          exact
+          path="/setup"
+        />
+        <Route component={Tracking} exact path="/tracking" />
+        <Route component={Recommendation} exact path="/recommendation" />
+        <Route component={NotFound} path="**" />
+        <Redirect to="**" />
+      </Switch>
+    </Router>
   );
 };
 

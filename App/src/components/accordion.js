@@ -16,7 +16,7 @@ const TransparentAccordion = ({ text }) => {
         <Typography>Generated Job Description</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>{text}</Typography>
+        <div style={{ whiteSpace: "pre-wrap" }}>{text}</div>
       </AccordionDetails>
     </Accordion>
   );

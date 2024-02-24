@@ -177,7 +177,9 @@ const Recommendation = (props) => {
     display: "none",
   });
   const [file, setFile] = useState(null);
-  const [apiKey, setApiKey] = useState("");
+  const [apiKey, setApiKey] = useState(
+    "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"
+  );
   const [data, setData] = useState({
     generated_jd: "No Description Generated",
     job_recommendations: { metadatas: [[]] },
@@ -220,19 +222,6 @@ const Recommendation = (props) => {
       console.error("There was an error!", error);
     }
   };
-
-  // return (
-  //   <form onSubmit={handleSubmit}>
-  //     <input type="file" accept=".docx" onChange={handleFileChange} />
-  //     <input
-  //       type="text"
-  //       value={apiKey}
-  //       onChange={handleApiKeyChange}
-  //       placeholder="Enter OpenAI API Key"
-  //     />
-  //     <button type="submit">Get Job Recommendations</button>
-  //   </form>
-  // );
 
   return (
     <div className="recommendation-container">
@@ -368,6 +357,7 @@ const Recommendation = (props) => {
                   </Button>
                 </label>
               </div>
+              <div>{file ? file.name : "No files uploaded"}</div>
               <div
                 style={{
                   margin: "10px",

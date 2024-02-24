@@ -1,10 +1,17 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
 import { Helmet } from "react-helmet";
+import { useHistory } from "react-router-dom";
 
 import "./setup.css";
 
 const Setup = (props) => {
+  let history = useHistory();
+
+  const handleClick = () => {
+    props.setLogin(true); // Set the state to false
+    history.push("/"); // Redirect to home page
+  };
   return (
     <div className="setup-container">
       <Helmet>
@@ -161,7 +168,9 @@ const Setup = (props) => {
                         <div className="setup-depth8-frame06">
                           <div className="setup-depth9-frame06">
                             <span className="setup-text28">
-                              <Button variant="inherit">Submit</Button>
+                              <Button variant="inherit" onClick={handleClick}>
+                                Submit
+                              </Button>
                             </span>
                           </div>
                         </div>
