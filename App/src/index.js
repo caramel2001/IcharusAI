@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
@@ -15,18 +15,50 @@ import Recommendation from "./views/recommendation";
 import NotFound from "./views/not-found";
 
 const App = () => {
+  const [login, setLogin] = useState(false);
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [name, setName] = useState("");
+  const [apiKey, setApiKey] = useState(null);
+
   return (
-    <Tracking />
-    // <Router>
-    //   <Switch>
-    //     <Route component={Home} exact path="/" />
-    //     <Route component={Setup} exact path="/setup" />
-    //     <Route component={Tracking} exact path="/tracking" />
-    //     <Route component={Recommendation} exact path="/recommendation" />
-    //     <Route component={NotFound} path="**" />
-    //     <Redirect to="**" />
-    //   </Switch>
-    // </Router>
+    // <Recommendation />
+    <Router>
+      <Switch>
+        <Route
+          component={(props) => <Home {...props} login={login} />}
+          exact
+          path="/"
+        />
+        {/* <Route component={Home} exact path="/" /> */}
+        <Route
+          component={(props) => (
+            <Setup
+              {...props}
+              setLogin={setLogin}
+              setApiKey={setApiKey}
+              setName={setName}
+              setPassword={setPassword}
+              setUsername={setUsername}
+            />
+          )}
+          exact
+          path="/setup"
+        />
+        <Route
+          component={(props) => <Tracking {...props} />}
+          exact
+          path="/tracking"
+        />
+        <Route
+          component={(props) => <Recommendation {...props} apiKey={apiKey} />}
+          exact
+          path="/recommendation"
+        />
+        <Route component={NotFound} path="**" />
+        <Redirect to="**" />
+      </Switch>
+    </Router>
   );
 };
 

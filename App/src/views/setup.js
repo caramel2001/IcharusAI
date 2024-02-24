@@ -1,15 +1,31 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
 import { Helmet } from "react-helmet";
+import { useHistory } from "react-router-dom";
 
 import "./setup.css";
 
 const Setup = (props) => {
+  let history = useHistory();
+  const [name, setName] = React.useState("");
+  const [username, setUsername] = React.useState(null);
+  const [password, setPassword] = React.useState(null);
+  const [apiKey, setApiKey] = React.useState(null);
+
+  const handleClick = () => {
+    props.setLogin(true); // Set the state to false
+    props.setName(name);
+    props.setUsername(username);
+    props.setPassword(password);
+    props.setApiKey(apiKey);
+
+    history.push("/"); // Redirect to home page
+  };
   return (
     <div className="setup-container">
       <Helmet>
-        <title>Setup - Outlandish Past Hare</title>
-        <meta property="og:title" content="Setup - Outlandish Past Hare" />
+        <title>Setup Your Profile</title>
+        <meta property="og:title" content="Career Compass" />
       </Helmet>
       <div className="setup-setup-page">
         <div className="setup-depth0-frame0">
@@ -26,9 +42,15 @@ const Setup = (props) => {
                   </div>
                   <div className="setup-depth5-frame1">
                     <div className="setup-depth6-frame01">
-                      <span className="setup-text">
-                        <span>TalentTrove</span>
-                      </span>
+                      <Button
+                        variant="transparent"
+                        style={{ padding: "0px", textTransform: "none" }}
+                        onClick={() => props.history.push("/")}
+                      >
+                        <span className="setup-text">
+                          <span>Career Compass</span>
+                        </span>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -66,6 +88,7 @@ const Setup = (props) => {
                         size="small"
                         variant="filled"
                         label="Name"
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                   </div>
@@ -83,6 +106,7 @@ const Setup = (props) => {
                         size="small"
                         variant="filled"
                         label="you@example.com"
+                        onChange={(e) => setUsername(e.target.value)}
                       />
                     </div>
                   </div>
@@ -100,6 +124,8 @@ const Setup = (props) => {
                         size="small"
                         variant="filled"
                         label="Password"
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
                       />
                     </div>
                   </div>
@@ -117,6 +143,8 @@ const Setup = (props) => {
                         size="small"
                         variant="filled"
                         label="API Key"
+                        type="password"
+                        onChange={(e) => setApiKey(e.target.value)}
                       />
                     </div>
                   </div>
@@ -161,7 +189,9 @@ const Setup = (props) => {
                         <div className="setup-depth8-frame06">
                           <div className="setup-depth9-frame06">
                             <span className="setup-text28">
-                              <Button variant="inherit">Submit</Button>
+                              <Button variant="inherit" onClick={handleClick}>
+                                Submit
+                              </Button>
                             </span>
                           </div>
                         </div>
