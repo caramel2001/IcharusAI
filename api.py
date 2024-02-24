@@ -6,7 +6,7 @@ import os
 
 # Assuming your Recommendation class is defined elsewhere in your project
 from jobTracker.recommendation import Recommendation
-from jobTracker.track import update_track_data, get_track_data
+from jobTracker.track import update_track_data, get_track_data, delete_track_data
 
 app = FastAPI()
 
@@ -68,9 +68,10 @@ def search_jobs(
     return {"job_recommendations": job_recommendations}
 
 
-# @app.post("/download-models/")
-# def create_track():
-#     return "success"
+@app.post("/download-models/")
+def create_track():
+
+    return "success"
 
 
 # @app.post("/create-records/")
@@ -92,8 +93,14 @@ async def update_track(
 
 
 @app.get("/get-records/")
-async def get_track():
+def get_track():
     track_data = get_track_data()
+    return track_data
+
+
+@app.post("/delete-record/")
+def delete_track(index: int):
+    track_data = delete_track_data(index)
     return track_data
 
 

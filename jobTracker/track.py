@@ -34,6 +34,12 @@ class TrackFile:
         track_data.to_csv(self.file_path, index=False)
         return track_data
 
+    def delete_file(self, index):
+        track_data = self.read_file()
+        track_data.drop(index, inplace=True)
+        track_data.to_csv(self.file_path, index=False)
+        return track_data
+
     def get_last_update_date(self):
         if os.path.exists(self.file_path):
             if not pd.isna(pd.read_csv(self.file_path)["date"].max()):
@@ -147,3 +153,9 @@ def update_track_data(gmail_username, gmail_api_key):
 def get_track_data():
     track = TrackFile()
     return track.read_file().to_dict(orient="records")
+
+
+def delete_track_data(index):
+    track = TrackFile()
+    track_data = track.delete_file(index)
+    return track_data.to_dict(orient="records")
