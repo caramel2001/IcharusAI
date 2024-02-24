@@ -4,17 +4,12 @@ import Button from "@mui/material/Button";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 // Define the steps in the job application process
-const steps = ["Applied", "OA", "Interview", "Offer"];
+const steps = ["Applied", "OA", "Interview", "Offer", "Rejection"];
 
-const JobApplicationTracker = ({
-  companyName = "Optiver",
-  jobPosition = "Quantitative Researcher",
-  logoUrl = "https://storage.googleapis.com/simplify-imgs/company/default/logo.png",
-  currentStage = "Applied",
-  date = "23/01/2024",
-}) => {
-  // Find the index of the current stage to set the active step in the Stepper
-  const activeStep = steps.findIndex((step) => step === currentStage);
+const JobApplicationTracker = ({ job, deleteJob }) => {
+  // Find the index of the stage to set the active step in the Stepper
+  job = job.job;
+  const activeStep = steps.findIndex((step) => step === steps[job.stage]);
 
   return (
     <div
@@ -22,13 +17,15 @@ const JobApplicationTracker = ({
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        margin: "20px",
+        padding: "20px",
+        width: "100%",
+        borderBottom: "1px solid rgba(236,236,236,1)",
       }}
     >
-      {logoUrl && (
+      {job.logoUrl && (
         <Avatar
-          alt={companyName}
-          src={logoUrl}
+          alt={job.company}
+          src={job.logoUrl}
           style={{ width: 64, height: 64, marginBottom: "10px" }}
         />
       )}
@@ -40,8 +37,8 @@ const JobApplicationTracker = ({
           margin: "20px",
         }}
       >
-        <Typography variant="h7">{jobPosition}</Typography>
-        <Typography variant="subtitle1">{companyName}</Typography>
+        <Typography variant="h7">{job.jobPosition}</Typography>
+        <Typography variant="subtitle1">{job.company}</Typography>
         <Typography variant="caption" style={{ marginBottom: "10px" }}>
           New York, NY, USA
         </Typography>
@@ -57,9 +54,9 @@ const JobApplicationTracker = ({
           </Step>
         ))}
       </Stepper>
-      {date && (
+      {job.date && (
         <Typography variant="caption" style={{ marginTop: "10px" }}>
-          {currentStage}: {date}
+          {steps[job.stage]}: {job.date}
         </Typography>
       )}
       <div
@@ -70,7 +67,7 @@ const JobApplicationTracker = ({
           margin: "20px",
         }}
       >
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={deleteJob}>
           <DeleteOutlineIcon />
         </Button>
       </div>

@@ -1,12 +1,104 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { Helmet } from "react-helmet";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import JobApplicationTracker from "../components/tracker";
+import responseEx from "../components/response.json";
 
 import "./tracking.css";
 
 const Tracking = (props) => {
+  const [jobs, setJobs] = useState([]);
+
+  const deleteJob = async (index) => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/get-records/", {
+        method: "POST",
+        index: index,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const resp = await response.json();
+      console.log(resp);
+      setJobs(resp);
+      listOfJobs = jobs.map((job) => <JobApplicationTracker job={job} />);
+
+      // Handle success - perhaps set state with returned job recommendations
+    } catch (error) {
+      setJobs(responseEx);
+      listOfJobs = jobs.map((job) => <JobApplicationTracker job={job} />);
+
+      console.error("There was an error!", error);
+    }
+  };
+
+  var listOfJobs = jobs.map((job, i) => (
+    <JobApplicationTracker key={i} job={{ job, deleteJob, i }} />
+  ));
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/get-records/", {
+          method: "GET",
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const resp = await response.json();
+        console.log(resp);
+        setJobs(resp);
+        listOfJobs = jobs.map((job) => <JobApplicationTracker job={job} />);
+
+        // Handle success - perhaps set state with returned job recommendations
+      } catch (error) {
+        setJobs(responseEx);
+        listOfJobs = jobs.map((job) => <JobApplicationTracker job={job} />);
+
+        console.error("There was an error!", error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  const updateData = async (event) => {
+    event.preventDefault;
+
+    const formData = new FormData();
+    formData.append("email", props.email);
+    formData.append("username", props.username);
+    formData.append("password", props.password);
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/get-records/", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const resp = await response.json();
+      console.log(resp);
+      setJobs(resp);
+      listOfJobs = jobs.map((job) => <JobApplicationTracker job={job} />);
+
+      // Handle success - perhaps set state with returned job recommendations
+    } catch (error) {
+      setJobs(responseEx);
+      listOfJobs = jobs.map((job) => <JobApplicationTracker job={job} />);
+
+      console.error("There was an error!", error);
+    }
+  };
+
   return (
     <div className="tracking-container">
       <Helmet>
@@ -94,7 +186,9 @@ const Tracking = (props) => {
                       <div className="tracking-depth7-frame004">
                         <div className="tracking-depth8-frame02">
                           <span className="tracking-text08">
-                            <Button variant="inherit">Download Models</Button>
+                            <Button variant="inherit" onClick={updateData}>
+                              Update Data
+                            </Button>
                           </span>
                         </div>
                       </div>
@@ -160,9 +254,7 @@ const Tracking = (props) => {
                     <div className="tracking-depth6-frame13">
                       <div className="tracking-depth7-frame011">
                         <span className="tracking-text16">
-                          <TextField variant="standard" fullWidth>
-                            Search for companies
-                          </TextField>
+                          <span>Search For Companies</span>
                         </span>
                       </div>
                     </div>
@@ -196,503 +288,8 @@ const Tracking = (props) => {
                           </div>
                         </div>
                       </div>
-                      <div className="tracking-depth7-frame11">
-                        <div className="tracking-depth8-frame05">
-                          <div className="tracking-depth9-frame04">
-                            <div className="tracking-depth10-frame003">
-                              <span className="tracking-text24">
-                                <span>Fraud Detection Analyst</span>
-                              </span>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame11">
-                            <div className="tracking-depth10-frame004">
-                              <div className="tracking-depth11-frame0">
-                                <div className="tracking-depth12-frame0">
-                                  <span className="tracking-text26">
-                                    <span>Meta</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame6">
-                            <div className="tracking-depth10-frame005">
-                              <div className="tracking-depth11-frame1">
-                                <div className="tracking-depth12-frame001">
-                                  <span className="tracking-text28">
-                                    <span>Applied</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame2">
-                            <div className="tracking-depth10-frame006">
-                              <div className="tracking-depth11-frame001">
-                                <div className="tracking-depth12-frame002"></div>
-                                <div className="tracking-depth12-frame1"></div>
-                              </div>
-                              <div className="tracking-depth11-frame101">
-                                <div className="tracking-depth12-frame003">
-                                  <span className="tracking-text30">
-                                    <span>OA</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame3">
-                            <div className="tracking-depth10-frame007">
-                              <div className="tracking-depth11-frame002">
-                                <div className="tracking-depth12-frame004"></div>
-                              </div>
-                              <div className="tracking-depth11-frame102">
-                                <div className="tracking-depth12-frame005">
-                                  <span className="tracking-text32">
-                                    <span>Interview</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame41">
-                            <div className="tracking-depth10-frame008">
-                              <div className="tracking-depth11-frame003">
-                                <div className="tracking-depth12-frame006"></div>
-                              </div>
-                              <div className="tracking-depth11-frame103">
-                                <div className="tracking-depth12-frame007">
-                                  <span className="tracking-text34">
-                                    <span>Offer</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame5">
-                            <div className="tracking-depth10-frame009">
-                              <div className="tracking-depth11-frame004">
-                                <div className="tracking-depth12-frame008"></div>
-                              </div>
-                              <div className="tracking-depth11-frame104">
-                                <span className="tracking-text36">
-                                  <span>Reject</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth5-frame21">
-                            <div className="tracking-depth6-frame011">
-                              <div className="tracking-depth7-frame013">
-                                <div className="tracking-frameicondelete">
-                                  <img
-                                    src="/external/vector4323-ftpn.svg"
-                                    alt="Vector4323"
-                                    className="tracking-vector"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="tracking-depth8-frame11">
-                          <div className="tracking-depth9-frame05">
-                            <div className="tracking-depth10-frame010">
-                              <span className="tracking-text38">
-                                <span>Fraud Detection Analyst</span>
-                              </span>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame12">
-                            <div className="tracking-depth10-frame011">
-                              <div className="tracking-depth11-frame005">
-                                <div className="tracking-depth12-frame009">
-                                  <span className="tracking-text40">
-                                    <span>Meta</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame61">
-                            <div className="tracking-depth10-frame012">
-                              <div className="tracking-depth11-frame105">
-                                <div className="tracking-depth12-frame010">
-                                  <span className="tracking-text42">
-                                    <span>Applied</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame21">
-                            <div className="tracking-depth10-frame013">
-                              <div className="tracking-depth11-frame006">
-                                <div className="tracking-depth12-frame011"></div>
-                                <div className="tracking-depth12-frame11"></div>
-                              </div>
-                              <div className="tracking-depth11-frame106">
-                                <div className="tracking-depth12-frame012">
-                                  <span className="tracking-text44">
-                                    <span>OA</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame31">
-                            <div className="tracking-depth10-frame014">
-                              <div className="tracking-depth11-frame007">
-                                <div className="tracking-depth12-frame013"></div>
-                              </div>
-                              <div className="tracking-depth11-frame107">
-                                <div className="tracking-depth12-frame014">
-                                  <span className="tracking-text46">
-                                    <span>Interview</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame42">
-                            <div className="tracking-depth10-frame015">
-                              <div className="tracking-depth11-frame008">
-                                <div className="tracking-depth12-frame015"></div>
-                              </div>
-                              <div className="tracking-depth11-frame108">
-                                <div className="tracking-depth12-frame016">
-                                  <span className="tracking-text48">
-                                    <span>Offer</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame51">
-                            <div className="tracking-depth10-frame016">
-                              <div className="tracking-depth11-frame009">
-                                <div className="tracking-depth12-frame017"></div>
-                              </div>
-                              <div className="tracking-depth11-frame109">
-                                <span className="tracking-text50">
-                                  <span>Reject</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth5-frame22">
-                            <div className="tracking-depth6-frame012">
-                              <div className="tracking-depth7-frame014">
-                                <div className="tracking-frameicondelete1">
-                                  <img
-                                    src="/external/vector4324-y10r.svg"
-                                    alt="Vector4324"
-                                    className="tracking-vector1"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="tracking-depth8-frame2">
-                          <div className="tracking-depth9-frame06">
-                            <div className="tracking-depth10-frame017">
-                              <span className="tracking-text52">
-                                <span>Fraud Detection Analyst</span>
-                              </span>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame13">
-                            <div className="tracking-depth10-frame018">
-                              <div className="tracking-depth11-frame010">
-                                <div className="tracking-depth12-frame018">
-                                  <span className="tracking-text54">
-                                    <span>Meta</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame62">
-                            <div className="tracking-depth10-frame019">
-                              <div className="tracking-depth11-frame110">
-                                <div className="tracking-depth12-frame019">
-                                  <span className="tracking-text56">
-                                    <span>Applied</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame22">
-                            <div className="tracking-depth10-frame020">
-                              <div className="tracking-depth11-frame011">
-                                <div className="tracking-depth12-frame020"></div>
-                                <div className="tracking-depth12-frame12"></div>
-                              </div>
-                              <div className="tracking-depth11-frame111">
-                                <div className="tracking-depth12-frame021">
-                                  <span className="tracking-text58">
-                                    <span>OA</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame32">
-                            <div className="tracking-depth10-frame021">
-                              <div className="tracking-depth11-frame012">
-                                <div className="tracking-depth12-frame022"></div>
-                              </div>
-                              <div className="tracking-depth11-frame112">
-                                <div className="tracking-depth12-frame023">
-                                  <span className="tracking-text60">
-                                    <span>Interview</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame43">
-                            <div className="tracking-depth10-frame022">
-                              <div className="tracking-depth11-frame013">
-                                <div className="tracking-depth12-frame024"></div>
-                              </div>
-                              <div className="tracking-depth11-frame113">
-                                <div className="tracking-depth12-frame025">
-                                  <span className="tracking-text62">
-                                    <span>Offer</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame52">
-                            <div className="tracking-depth10-frame023">
-                              <div className="tracking-depth11-frame014">
-                                <div className="tracking-depth12-frame026"></div>
-                              </div>
-                              <div className="tracking-depth11-frame114">
-                                <span className="tracking-text64">
-                                  <span>Reject</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth5-frame23">
-                            <div className="tracking-depth6-frame013">
-                              <div className="tracking-depth7-frame015">
-                                <div className="tracking-frameicondelete2">
-                                  <img
-                                    src="/external/vector4325-rkw5.svg"
-                                    alt="Vector4325"
-                                    className="tracking-vector2"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="tracking-depth8-frame3">
-                          <div className="tracking-depth9-frame07">
-                            <div className="tracking-depth10-frame024">
-                              <span className="tracking-text66">
-                                <span>Fraud Detection Analyst</span>
-                              </span>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame14">
-                            <div className="tracking-depth10-frame025">
-                              <div className="tracking-depth11-frame015">
-                                <div className="tracking-depth12-frame027">
-                                  <span className="tracking-text68">
-                                    <span>Meta</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame63">
-                            <div className="tracking-depth10-frame026">
-                              <div className="tracking-depth11-frame115">
-                                <div className="tracking-depth12-frame028">
-                                  <span className="tracking-text70">
-                                    <span>Applied</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame23">
-                            <div className="tracking-depth10-frame027">
-                              <div className="tracking-depth11-frame016">
-                                <div className="tracking-depth12-frame029"></div>
-                                <div className="tracking-depth12-frame13"></div>
-                              </div>
-                              <div className="tracking-depth11-frame116">
-                                <div className="tracking-depth12-frame030">
-                                  <span className="tracking-text72">
-                                    <span>OA</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame33">
-                            <div className="tracking-depth10-frame028">
-                              <div className="tracking-depth11-frame017">
-                                <div className="tracking-depth12-frame031"></div>
-                              </div>
-                              <div className="tracking-depth11-frame117">
-                                <div className="tracking-depth12-frame032">
-                                  <span className="tracking-text74">
-                                    <span>Interview</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame44">
-                            <div className="tracking-depth10-frame029">
-                              <div className="tracking-depth11-frame018">
-                                <div className="tracking-depth12-frame033"></div>
-                              </div>
-                              <div className="tracking-depth11-frame118">
-                                <div className="tracking-depth12-frame034">
-                                  <span className="tracking-text76">
-                                    <span>Offer</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame53">
-                            <div className="tracking-depth10-frame030">
-                              <div className="tracking-depth11-frame019">
-                                <div className="tracking-depth12-frame035"></div>
-                              </div>
-                              <div className="tracking-depth11-frame119">
-                                <span className="tracking-text78">
-                                  <span>Reject</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth5-frame24">
-                            <div className="tracking-depth6-frame014">
-                              <div className="tracking-depth7-frame016">
-                                <div className="tracking-frameicondelete3">
-                                  <img
-                                    src="/external/vector4325-2xe6.svg"
-                                    alt="Vector4325"
-                                    className="tracking-vector3"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="tracking-depth8-frame4">
-                          <div className="tracking-depth9-frame08">
-                            <div className="tracking-depth10-frame031">
-                              <span className="tracking-text80">
-                                <span>Fraud Detection Analyst</span>
-                              </span>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame15">
-                            <div className="tracking-depth10-frame032">
-                              <div className="tracking-depth11-frame020">
-                                <div className="tracking-depth12-frame036">
-                                  <span className="tracking-text82">
-                                    <span>Meta</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame64">
-                            <div className="tracking-depth10-frame033">
-                              <div className="tracking-depth11-frame120">
-                                <div className="tracking-depth12-frame037">
-                                  <span className="tracking-text84">
-                                    <span>Applied</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame24">
-                            <div className="tracking-depth10-frame034">
-                              <div className="tracking-depth11-frame021">
-                                <div className="tracking-depth12-frame038"></div>
-                                <div className="tracking-depth12-frame14"></div>
-                              </div>
-                              <div className="tracking-depth11-frame121">
-                                <div className="tracking-depth12-frame039">
-                                  <span className="tracking-text86">
-                                    <span>OA</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame34">
-                            <div className="tracking-depth10-frame035">
-                              <div className="tracking-depth11-frame022">
-                                <div className="tracking-depth12-frame040"></div>
-                              </div>
-                              <div className="tracking-depth11-frame122">
-                                <div className="tracking-depth12-frame041">
-                                  <span className="tracking-text88">
-                                    <span>Interview</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame45">
-                            <div className="tracking-depth10-frame036">
-                              <div className="tracking-depth11-frame023">
-                                <div className="tracking-depth12-frame042"></div>
-                              </div>
-                              <div className="tracking-depth11-frame123">
-                                <div className="tracking-depth12-frame043">
-                                  <span className="tracking-text90">
-                                    <span>Offer</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth9-frame54">
-                            <div className="tracking-depth10-frame037">
-                              <div className="tracking-depth11-frame024">
-                                <div className="tracking-depth12-frame044"></div>
-                              </div>
-                              <div className="tracking-depth11-frame124">
-                                <span className="tracking-text92">
-                                  <span>Reject</span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="tracking-depth5-frame25">
-                            <div className="tracking-depth6-frame015">
-                              <div className="tracking-depth7-frame017">
-                                <div className="tracking-frameicondelete4">
-                                  <img
-                                    src="/external/vector4326-o1v9.svg"
-                                    alt="Vector4326"
-                                    className="tracking-vector4"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <div className="tracking-depth7-frame11"></div>
+                      {listOfJobs}
                     </div>
                   </div>
                 </div>
