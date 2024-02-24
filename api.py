@@ -5,8 +5,8 @@ import uvicorn
 import os
 
 # Assuming your Recommendation class is defined elsewhere in your project
-from talenttrove.recommendation import Recommendation
-from talenttrove.track import update_track_data, get_track_data
+from jobTracker.recommendation import Recommendation
+from jobTracker.track import update_track_data, get_track_data
 
 app = FastAPI()
 
