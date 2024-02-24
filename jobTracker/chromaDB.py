@@ -93,11 +93,11 @@ def main():
             }
         )
         ids.append(str(max_id) + str(index))
-    path = os.path.join(os.getcwd(), "data/data")
+    path = os.path.join(os.getcwd(), "data")
     if not os.path.exists(path):
         os.mkdir(path)
     chroma_client = chromadb.PersistentClient(
-        path=os.path.join(os.getcwd(), "data/data/jd_vectordb")
+        path=os.path.join(os.getcwd(), "data/jd_vectordb")
     )
     collection = chroma_client.get_or_create_collection(
         name="mycareersfuture_jd",
