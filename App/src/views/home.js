@@ -9,8 +9,8 @@ const Home = (props) => {
   return (
     <div className="home-container">
       <Helmet>
-        <title>Outlandish Past Hare</title>
-        <meta property="og:title" content="Outlandish Past Hare" />
+        <title>Career Compass</title>
+        <meta property="og:title" content="Career Compass" />
       </Helmet>
       <div className="home-landing">
         <div className="home-depth0-frame0">
@@ -27,9 +27,15 @@ const Home = (props) => {
                   </div>
                   <div className="home-depth5-frame1">
                     <div className="home-depth6-frame001">
-                      <span className="home-text">
-                        <span>Career Compass</span>
-                      </span>
+                      <Button
+                        variant="transparent"
+                        style={{ padding: "0px", textTransform: "none" }}
+                        onClick={() => props.history.push("/")}
+                      >
+                        <span className="home-text">
+                          <span>Career Compass</span>
+                        </span>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -75,6 +81,14 @@ const Home = (props) => {
                       onClick={() => props.history.push("/recommendation")}
                     >
                       Recommendation
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      style={{ padding: "10px" }}
+                      onClick={() => props.history.push("/setup")}
+                    >
+                      Re-Setup Profile
                     </Button>
                   </div>
                 ) : (
