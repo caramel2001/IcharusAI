@@ -10,3 +10,11 @@ python jobTracker/chromaDB.py
 ```
 uvicorn api:app --reload
 ```
+
+## ReactJS
+
+```
+cd App
+npm install
+npm start
+```
