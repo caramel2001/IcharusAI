@@ -147,15 +147,21 @@ def update_track_data(gmail_username, gmail_api_key):
     print("Updating Track Data")
 
     track_data = track.update_file(jobs)
+    track_data["title"] = track_data["title"].fillna("")
+    track_data["company"] = track_data["company"].fillna("")
     return track_data.to_dict(orient="records")
 
 
 def get_track_data():
-    track = TrackFile()
-    return track.read_file().to_dict(orient="records")
+    track = TrackFile().read_file()
+    track["title"] = track["title"].fillna("")
+    track["company"] = track["company"].fillna("")
+    return track.to_dict(orient="records")
 
 
 def delete_track_data(index):
     track = TrackFile()
     track_data = track.delete_file(index)
+    track_data["title"] = track_data["title"].fillna("")
+    track_data["company"] = track_data["company"].fillna("")
     return track_data.to_dict(orient="records")

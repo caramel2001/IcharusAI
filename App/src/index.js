@@ -46,7 +46,9 @@ const App = () => {
           path="/setup"
         />
         <Route
-          component={(props) => <Tracking {...props} />}
+          component={(props) => (
+            <Tracking {...props} username={username} password={password} />
+          )}
           exact
           path="/tracking"
         />

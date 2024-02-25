@@ -74,12 +74,6 @@ def create_track():
     return "success"
 
 
-# @app.post("/create-records/")
-# def create_track():
-
-#     return "success"
-
-
 @app.post("/update-records/")
 async def update_track(
     gmail_username: str = Form(...),
@@ -93,7 +87,7 @@ async def update_track(
 
 
 @app.get("/get-records/")
-def get_track():
+async def get_track():
     track_data = get_track_data()
     return track_data
 

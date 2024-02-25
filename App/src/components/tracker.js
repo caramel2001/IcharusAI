@@ -6,9 +6,33 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 // Define the steps in the job application process
 const steps = ["Applied", "OA", "Interview", "Offer", "Rejection"];
 
-const JobApplicationTracker = ({ job, deleteJob }) => {
+const JobApplicationTracker = ({ job, index, setJobs }) => {
   // Find the index of the stage to set the active step in the Stepper
-  job = job.job;
+
+  const deleteJob = async (index) => {
+    try {
+      console.log(index, typeof index);
+      const response = await fetch(
+        `http://127.0.0.1:8000/delete-record/?index=${index}`,
+        {
+          method: "POST",
+          // body: JSON.stringify({ index }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const resp = await response.json();
+      console.log(resp);
+      setJobs(resp);
+
+      // Handle success - perhaps set state with returned job recommendations
+    } catch (error) {
+      console.error("There was an error!", error);
+    }
+  };
   const activeStep = steps.findIndex((step) => step === steps[job.stage]);
 
   return (
@@ -22,11 +46,11 @@ const JobApplicationTracker = ({ job, deleteJob }) => {
         borderBottom: "1px solid rgba(236,236,236,1)",
       }}
     >
-      {job.logoUrl && (
+      {job.logo && (
         <Avatar
           alt={job.company}
-          src={job.logoUrl}
-          style={{ width: 64, height: 64, marginBottom: "10px" }}
+          src={job.logo}
+          style={{ marginBottom: "10px" }}
         />
       )}
       <div
@@ -37,10 +61,17 @@ const JobApplicationTracker = ({ job, deleteJob }) => {
           margin: "20px",
         }}
       >
-        <Typography variant="h7">{job.jobPosition}</Typography>
-        <Typography variant="subtitle1">{job.company}</Typography>
+        <Typography variant="body2" style={{ fontWeight: "800" }}>
+          {job.title}
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          style={{ fontWeight: "300", fontSize: "14px" }}
+        >
+          {job.company}
+        </Typography>
         <Typography variant="caption" style={{ marginBottom: "10px" }}>
-          New York, NY, USA
+          SG
         </Typography>
       </div>
       <Stepper
@@ -67,7 +98,11 @@ const JobApplicationTracker = ({ job, deleteJob }) => {
           margin: "20px",
         }}
       >
-        <Button variant="contained" color="primary" onClick={deleteJob}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => deleteJob(index)}
+        >
           <DeleteOutlineIcon />
         </Button>
       </div>

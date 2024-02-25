@@ -5,39 +5,17 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import JobApplicationTracker from "../components/tracker";
 import responseEx from "../components/response.json";
+import CircularProgress from "@mui/material/CircularProgress"; // Import MUI CircularProgress for loading indicator
 
 import "./tracking.css";
 
 const Tracking = (props) => {
   const [jobs, setJobs] = useState([]);
-
-  const deleteJob = async (index) => {
-    try {
-      const response = await fetch("http://127.0.0.1:8000/get-records/", {
-        method: "POST",
-        index: index,
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const resp = await response.json();
-      console.log(resp);
-      setJobs(resp);
-      listOfJobs = jobs.map((job) => <JobApplicationTracker job={job} />);
-
-      // Handle success - perhaps set state with returned job recommendations
-    } catch (error) {
-      setJobs(responseEx);
-      listOfJobs = jobs.map((job) => <JobApplicationTracker job={job} />);
-
-      console.error("There was an error!", error);
-    }
-  };
+  const [isLoading, setIsLoading] = useState(false);
 
   var listOfJobs = jobs.map((job, i) => (
-    <JobApplicationTracker key={i} job={{ job, deleteJob, i }} />
+    // <JobApplicationTracker key={i} job={{ job, i, setJobs }} />
+    <JobApplicationTracker key={i} job={job} index={i} setJobs={setJobs} />
   ));
 
   useEffect(() => {
@@ -69,14 +47,17 @@ const Tracking = (props) => {
 
   const updateData = async (event) => {
     event.preventDefault;
-
+    if (props.username == null || props.password == null) {
+      alert("Please enter your username and password");
+      return;
+    }
+    setIsLoading(true); // Start loading
     const formData = new FormData();
-    formData.append("email", props.email);
-    formData.append("username", props.username);
-    formData.append("password", props.password);
+    formData.append("gmail_username", props.username);
+    formData.append("gmail_password", props.password);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/get-records/", {
+      const response = await fetch("http://127.0.0.1:8000/update-records/", {
         method: "POST",
         body: formData,
       });
@@ -96,6 +77,8 @@ const Tracking = (props) => {
       listOfJobs = jobs.map((job) => <JobApplicationTracker job={job} />);
 
       console.error("There was an error!", error);
+    } finally {
+      setIsLoading(false); // Stop loading regardless of the outcome
     }
   };
 
@@ -118,12 +101,16 @@ const Tracking = (props) => {
                       className="tracking-depth6-frame0"
                     />
                   </div>
-                  <div className="tracking-depth5-frame1">
-                    <div className="tracking-depth6-frame001">
+                  <div className="home-depth6-frame001">
+                    <Button
+                      variant="transparent"
+                      style={{ padding: "0px", textTransform: "none" }}
+                      onClick={() => props.history.push("/")}
+                    >
                       <span className="tracking-text">
-                        <span>TalentTrove</span>
+                        <span>Career Compass</span>
                       </span>
-                    </div>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -168,13 +155,6 @@ const Tracking = (props) => {
                         <div className="tracking-depth8-frame0"></div>
                       </div>
                       <div className="tracking-depth7-frame1">
-                        <div className="tracking-depth8-frame01">
-                          <div className="tracking-depth9-frame0">
-                            <span className="tracking-text06">
-                              <span>Pratham</span>
-                            </span>
-                          </div>
-                        </div>
                         <div className="tracking-depth8-frame1">
                           <div className="tracking-depth9-frame01"></div>
                         </div>
@@ -189,20 +169,14 @@ const Tracking = (props) => {
                             <Button variant="inherit" onClick={updateData}>
                               Update Data
                             </Button>
+                            {/* {isLoading ? <CircularProgress /> : null} */}
                           </span>
                         </div>
                       </div>
                     </div>
-                    <div className="tracking-depth6-frame1">
-                      <div className="tracking-depth7-frame005">
-                        <div className="tracking-depth8-frame03">
-                          <div className="tracking-depth9-frame02">
-                            <span className="tracking-text10">
-                              <span>Tell Us What You Think</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
+                    {/* {isLoading ? null : <CircularProgress />} */}
+                    <div style={{ padding: "10px" }}>
+                      {isLoading ? <CircularProgress /> : null}
                     </div>
                   </div>
                 </div>
