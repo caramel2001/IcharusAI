@@ -50,12 +50,12 @@ class TrackFile:
                 formatted_date = date.strftime("%d-%b-%Y")
                 return formatted_date
             else:
-                date = (pd.to_datetime("today") - pd.DateOffset(days=7)).date()
+                date = (pd.to_datetime("today") - pd.DateOffset(days=2)).date()
                 formatted_date = date.strftime("%d-%b-%Y")
                 return formatted_date
         else:
             # return date 1 week ago
-            date = (pd.to_datetime("today") - pd.DateOffset(days=7)).date()
+            date = (pd.to_datetime("today") - pd.DateOffset(days=2)).date()
             formatted_date = date.strftime("%d-%b-%Y")
             return formatted_date
 
@@ -131,7 +131,10 @@ def update_track_data(gmail_username, gmail_api_key):
         jobs.loc[index, "title"] = classifier.extractor.get_jobtitle(i)
         jobs.loc[index, "logo"] = get_logo_trustpilot(jobs.loc[index, "company"])
     if jobs.shape[0] == 0:
-        return {}
+        track_data = track.read_file()
+        track_data["title"] = track_data["title"].fillna("")
+        track_data["company"] = track_data["company"].fillna("")
+        return track_data.to_dict(orient="records")
     print("Stage Classfiying")
     stage_classifier = JobStageClassifier()
     stages = []

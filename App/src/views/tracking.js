@@ -149,18 +149,6 @@ const Tracking = (props) => {
             <div className="tracking-depth2-frame1">
               <div className="tracking-depth3-frame01">
                 <div className="tracking-depth4-frame01">
-                  <div className="tracking-depth5-frame02">
-                    <div className="tracking-depth6-frame005">
-                      <div className="tracking-depth7-frame003">
-                        <div className="tracking-depth8-frame0"></div>
-                      </div>
-                      <div className="tracking-depth7-frame1">
-                        <div className="tracking-depth8-frame1">
-                          <div className="tracking-depth9-frame01"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <div className="tracking-depth5-frame12">
                     <div className="tracking-depth6-frame006">
                       <div className="tracking-depth7-frame004">
@@ -264,6 +252,11 @@ const Tracking = (props) => {
                       </div>
                       <div className="tracking-depth7-frame11"></div>
                       {listOfJobs}
+                      {jobs.length === 0 ? (
+                        <div style={{ padding: "20px" }}>
+                          No track records available
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
