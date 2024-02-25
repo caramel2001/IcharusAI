@@ -49,7 +49,7 @@ async def recommend_jobs(
         return {"error": "Failed to generate job description from the resume."}
 
     # # Search for job recommendations based on the generated job description
-    job_recommendations = recommendation_engine.search_jd(generated_jd, k=10)
+    job_recommendations = recommendation_engine.search_jd(generated_jd, k=20)
 
     # Return the top 10 job recommendations
     return {"generated_jd": generated_jd, "job_recommendations": job_recommendations}

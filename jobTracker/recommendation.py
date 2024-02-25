@@ -60,7 +60,7 @@ class Recommendation:
             print(e)
             return ""
 
-    def search_jd(self, jd, k=10):
+    def search_jd(self, jd, k=20):
         results = self.collection.query(
             query_texts=[jd],
             n_results=k,
