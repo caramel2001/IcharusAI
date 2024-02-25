@@ -4,7 +4,7 @@ from setfit import SetFitModel
 from bs4 import BeautifulSoup
 import os
 import pandas as pd
-from .flan import JobTitleCompanyNameExtractor
+from .flan import JobTitleCompanyNameExtractor, GeminiJobTitleCompanyNameExtractor
 import gdown
 
 email_classifier_model = "https://drive.google.com/drive/folders/1Jn_cjP1OjO5Ttj9-xs63o9cTPNhKwHOv?usp=drive_link"
@@ -32,7 +32,7 @@ class JobClassifier:
     def __init__(self) -> None:
         download_model()
         self.model = SetFitModel.from_pretrained(model_path)
-        self.extractor = JobTitleCompanyNameExtractor()
+        self.extractor = GeminiJobTitleCompanyNameExtractor()
 
     def infer(self, sentence):
         predtext = [sentence]
