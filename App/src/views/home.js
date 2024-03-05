@@ -1,13 +1,16 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { Helmet } from "react-helmet";
-
+import { LampDemo } from "../components/lamps";
+import NavBar from "../components/header";
 import "./home.css";
 
 const Home = (props) => {
   console.log(props);
   return (
-    <div className="home-container">
+    <div>
+      <NavBar />
+      <LampDemo />
       <Helmet>
         <title>Career Compass</title>
         <meta property="og:title" content="Career Compass" />

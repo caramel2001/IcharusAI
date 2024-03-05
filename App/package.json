@@ -6,14 +6,19 @@
     "@craco/craco": "^7.0.0-alpha.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@headlessui/react": "^1.7.18",
+    "@heroicons/react": "^2.1.1",
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "@mui/styled-engine-sc": "^6.0.0-alpha.17",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "clsx": "^2.1.0",
+    "framer-motion": "^11.0.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "tailwind-merge": "^2.2.1"
   },
   "scripts": {
     "start": "craco start",
@@ -37,6 +42,9 @@
     ]
   },
   "devDependencies": {
-    "react-scripts": "^5.0.1"
+    "autoprefixer": "^10.4.18",
+    "postcss": "^8.4.35",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.4.1"
   }
 }
