@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import { Helmet } from "react-helmet";
 import { LampDemo } from "../components/lamps";
 import NavBar from "../components/header";
+import {Input} from "../components/input";
 import "./home.css";
 
 const Home = (props) => {
@@ -11,6 +12,7 @@ const Home = (props) => {
     <div>
       <NavBar />
       <LampDemo />
+      <Input/>
       <Helmet>
         <title>Career Compass</title>
         <meta property="og:title" content="Career Compass" />
