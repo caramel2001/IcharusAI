@@ -32,13 +32,13 @@ export default function NavBar({login=true}) {
           
         {login ? (
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-        <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+        <a href="/tracking" className="text-sm font-semibold leading-6 text-gray-900">
            Job Tracking
           </a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
             Icarus Coach
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/recommendation" className="text-sm font-semibold leading-6 text-gray-900">
           Icarus Recommendation
           </a>
         </Popover.Group>) : null}
@@ -74,13 +74,13 @@ export default function NavBar({login=true}) {
               <div className="space-y-2 py-6">
                 
                 <a
-                  href="#"
+                  href="/tracking"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Job Tracking
                 </a>
                 <a
-                  href="#"
+                  href="/recommendation"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Icarus Recommendations
