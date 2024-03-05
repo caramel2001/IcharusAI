@@ -1,42 +1,21 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
+import { useState } from 'react'
+import { Dialog, Popover } from '@headlessui/react'
 import {
-  ArrowPathIcon,
   Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
-const products = [
-  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
-]
-const callsToAction = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
-]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-export default function NavBar() {
+import logo from '../assets/logo.jpg'
+export default function NavBar({login=true}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <header className="bg-white">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+            <span className="sr-only">Icarus AI</span>
+            <img className="h-10 w-auto" src={logo} alt="" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -49,22 +28,23 @@ export default function NavBar() {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <Popover.Group className="hidden lg:flex lg:gap-x-12">
+        
           
-
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Features
+        {login ? (
+        <Popover.Group className="hidden lg:flex lg:gap-x-12">
+        <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+           Job Tracking
           </a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Marketplace
+            Icarus Coach
           </a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Company
+          Icarus Recommendation
           </a>
-        </Popover.Group>
+        </Popover.Group>) : null}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
+          <a href="/setup" className="text-sm font-semibold leading-6 text-gray-900">
+            Setup Profile <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </nav>
@@ -73,10 +53,10 @@ export default function NavBar() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">Icarus AI</span>
               <img
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                src={logo}
                 alt=""
               />
             </a>
@@ -92,33 +72,24 @@ export default function NavBar() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <Disclosure as="div" className="-mx-3">
-                  {({ open }) => (
-                    <>
-                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                        Product
-                      </Disclosure.Button>
-                     
-                    </>
-                  )}
-                </Disclosure>
+                
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Features
+                  Job Tracking
                 </a>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Marketplace
+                  Icarus Recommendations
                 </a>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Company
+                  Icarus Coach
                 </a>
               </div>
               <div className="py-6">

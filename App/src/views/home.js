@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { Helmet } from "react-helmet";
-import { LampDemo } from "../components/lamps";
+import { Icharus } from "../components/lamps";
 import NavBar from "../components/header";
 import "./home.css";
 
@@ -9,107 +9,15 @@ const Home = (props) => {
   console.log(props);
   return (
     <div>
-      <NavBar />
-      <LampDemo />
+      <NavBar login={props.login} />
+      <Icharus />
       <Helmet>
         <title>Career Compass</title>
         <meta property="og:title" content="Career Compass" />
       </Helmet>
       <div className="home-landing">
         <div className="home-depth0-frame0">
-          <div className="home-depth1-frame0">
-            <div className="home-depth2-frame0">
-              <div className="home-depth3-frame0">
-                <div className="home-depth4-frame0">
-                  <div className="home-depth5-frame0">
-                    <img
-                      src="/external/depth6frame019-xyyb.svg"
-                      alt="Depth6Frame019"
-                      className="home-depth6-frame0"
-                    />
-                  </div>
-                  <div className="home-depth5-frame1">
-                    <div className="home-depth6-frame001">
-                      <Button
-                        variant="transparent"
-                        style={{ padding: "0px", textTransform: "none" }}
-                        onClick={() => props.history.push("/")}
-                      >
-                        <span className="home-text">
-                          <span>Career Compass</span>
-                        </span>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="home-depth3-frame1">
-                <div className="home-depth4-frame01">
-                  <div className="home-depth5-frame11">
-                    <div className="home-depth6-frame002">
-                      <span className="home-text02"></span>
-                    </div>
-                  </div>
-                  <div className="home-depth5-frame2">
-                    <div className="home-depth6-frame003">
-                      <span className="home-text04"></span>
-                    </div>
-                  </div>
-                  <div className="home-depth5-frame3">
-                    <div className="home-depth6-frame004">
-                      <span className="home-text06"></span>
-                    </div>
-                  </div>
-                </div>
-                {/* <div className="home-depth4-frame1"> */}
-                {props.login ? (
-                  <div className="home-depth4-frame1">
-                    <Button
-                      variant="transparent"
-                      style={{ padding: "10px" }}
-                      onClick={() => props.history.push("/")}
-                    >
-                      Home
-                    </Button>
-                    <Button
-                      variant="transparent"
-                      style={{ padding: "10px" }}
-                      onClick={() => props.history.push("/tracking")}
-                    >
-                      Tracking
-                    </Button>
-                    <Button
-                      variant="transparent"
-                      style={{ padding: "10px" }}
-                      onClick={() => props.history.push("/recommendation")}
-                    >
-                      Recommendation
-                    </Button>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      style={{ padding: "10px" }}
-                      onClick={() => props.history.push("/setup")}
-                    >
-                      Re-Setup Profile
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="home-depth4-frame1">
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      style={{ padding: "10px" }}
-                      onClick={() => props.history.push("/setup")}
-                    >
-                      Setup Profile
-                    </Button>
-                  </div>
-                )}
-
-                {/* </div> */}
-              </div>
-            </div>
+          <div className="home-depth1-frame0" id="home">
             <div className="home-depth2-frame1">
               <div className="home-depth3-frame01">
                 <div className="home-depth4-frame02">
@@ -274,14 +182,20 @@ const Home = (props) => {
                       </div>
                     </div>
                     <div className="home-depth6-frame11">
-                      <Button
+                      <button
+                        className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white text-sm"
+                        onClick={() => props.history.push("/setup")}
+                      >
+                        Setup Profile
+                      </button>
+                      {/* <Button
                         variant="contained"
                         color="primary"
                         style={{ padding: "10px" }}
                         onClick={() => props.history.push("/setup")}
                       >
                         Setup Profile
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 </div>
