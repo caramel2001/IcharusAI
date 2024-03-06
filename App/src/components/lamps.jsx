@@ -2,7 +2,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../utils/cn";
-export function LampDemo() {
+import {
+    RocketLaunchIcon
+ } from '@heroicons/react/24/outline'
+import { useHistory } from 'react-router-dom';
+
+export function Icharus() {
+    let history = useHistory();
+
     return (
       <LampContainer>
         <motion.h1
@@ -17,15 +24,20 @@ export function LampDemo() {
         >
           Icharus AI <br /> 
          {/* # div of small text size */}
-         <div className="text-3xl">Soar towards your career goals</div>
+         <div className="text-3xl flex">Soar towards your career goals
+         <RocketLaunchIcon className="h-8 w-8 text-gray-400 ml-2" />
+        </div>
         </motion.h1>
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
-        <button className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white text-sm">
-          Setup
+        <button
+        className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white text-sm"
+        onClick={() => history.push('/setup')}
+        >
+        Setup
         </button>
-        <button className="w-40 h-10 rounded-xl bg-white text-black border border-black  text-sm">
-          Go Down
-        </button>
+        <a href="#home" className="inline-block w-40 h-10 rounded-xl bg-white text-black border border-black text-sm flex items-center justify-center">
+        Go Down
+        </a>
       </div>
       </LampContainer>
     );
