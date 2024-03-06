@@ -39,6 +39,8 @@ const Recommendation = (props) => {
     formData.append("resume", file);
     formData.append("api_key", apiKey);
     formData.append("ai_service", service);
+
+
     try {
       const response = await fetch("http://127.0.0.1:8000/recommend-jobs/", {
         method: "POST",
@@ -50,7 +52,7 @@ const Recommendation = (props) => {
       }
 
       const resp = await response.json();
-      console.log(resp);
+      console.log('response',resp);
       setData(resp);
       console.log("descs")
       console.log(data["job_recommendations"]['documents']['0']);

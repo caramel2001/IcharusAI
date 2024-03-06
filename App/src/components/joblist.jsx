@@ -3,10 +3,8 @@ import Grid from "@mui/material/Grid";
 import JobCard from "./jobcard";
 
 const JobList = ({ jobs ,descriptions,file ,ai_service,api_key}) => {
-  console.log('in the lists bro')
-  console.log(jobs[0]);
-  console.log(descriptions);
-  console.log(descriptions[0])
+
+  console.log('ai_service in job list',ai_service)
   // Accept job data as a prop
   return (
     <Grid container spacing={8} justifyContent="left">

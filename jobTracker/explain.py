@@ -18,6 +18,7 @@ def read_word_document(resume):
 def explain_openai_gpt(jd_text, res, rec=True, ai_service='llama', api_key=None):
     # Define the content based on whether the job description was recommended or not
     resume_text= read_word_document(res)
+    print('this is the resume text', resume_text)
     if rec:
         content =  "You are an Explainable Job Recommendation system. The resume submitted by the user is:\n {res}\n Please give reasons why the user was recommended the role with the following job description and job requirements:{jd}\n Do not use more than 3 lines. Use passive voice for the response".format(res=resume_text,jd=jd_text)
     else:
@@ -40,6 +41,7 @@ def explain_openai_gpt(jd_text, res, rec=True, ai_service='llama', api_key=None)
                 presence_penalty=0,
             )
             result = response.choices[0].message.content.strip()
+            
         elif ai_service == 'llama':
             prompt = "You are an Explainable Job Recommendation system. The resume submitted by the user is:\n {res}\n Please give reasons why the user was recommended the role with the following job description and job requirements:{jd}\n Do not use more than 3 lines. Use passive voice for the response".format(res=res,jd=jd_text)
 
@@ -54,12 +56,13 @@ def explain_openai_gpt(jd_text, res, rec=True, ai_service='llama', api_key=None)
             )
             response_body = json.loads(response["body"].read())
             completion = response_body["generation"]
+            print(completion,'completion')
             print("explaination generated with Llama")
             return completion
         else:
             logging.warning("Invalid AI service specified.")
             return ""
-        
+        print("this is the result", result)
         print("Explanation for Recommendation generated")
         return result
     except Exception as e:

@@ -68,6 +68,7 @@ def search_jobs(
 
 @app.post("/explain-record/")
 async def explain_record(    jd: str = Form(...),resume: UploadFile = File(...), ai_service: str = Form("llama"),api_key: Optional[str] = Form(None)):
+    print(ai_service,"ai_service called")
     temp_file_path = f"temp_{resume.filename}"
     with open(temp_file_path, "wb") as buffer:
         buffer.write(await resume.read())
