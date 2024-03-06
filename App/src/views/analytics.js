@@ -5,21 +5,20 @@ import { BarChart, Bar, XAxis, YAxis } from 'recharts';
 import './analytics.css';
 
 const dataPie = [
-  { name: 'Applications', value: 400 },
-  { name: 'Rejections', value: 300 },
-  { name: 'Online Assessment', value: 300 },
-  { name: 'Interviews', value: 200 },
-  { name: 'Acceptances', value: 100 },
+  { name: 'Applications', value:35 },
+  { name: 'Rejections', value: 10 },
+  { name: 'Online Assessment', value: 18 },
+  { name: 'Interviews', value: 4 },
+  { name: 'Acceptances', value: 1 },
 ];
 
 const dataBar = [
-  { name: 'Jan', uv: 4000 },
-  { name: 'Feb', uv: 3000 },
-  { name: 'Mar', uv: 2000 },
-  { name: 'Apr', uv: 2780 },
-  { name: 'May', uv: 1890 },
-  { name: 'Jun', uv: 2390 },
-  { name: 'Jul', uv: 3490 },
+  { name: 'Fri', NumberOfApplications: 7 },
+  { name: 'Sat', NumberOfApplications: 4 },
+  { name: 'Sun', NumberOfApplications: 3 },
+  { name: 'Mon', NumberOfApplications: 9},
+  { name: 'Tue', NumberOfApplications: 8 },
+  { name: 'Wed', NumberOfApplications: 4 },
 ];
 
 
@@ -34,7 +33,7 @@ const MetricCard = ({ title, value, percentage }) => {
         {percentage}
       </div>
       <div className="metric-footer">
-        vs previous 30 days
+        Last week data only
       </div>
     </div>
   );
@@ -43,11 +42,11 @@ const MetricCard = ({ title, value, percentage }) => {
 const Analytics = () => {
   return (
     <div className="analytics-dashboard">
-      <h1>Executive Dashboard</h1>
+      <h1>Job Application Status Dashboard</h1>
       <div className="metrics-container">
-        <MetricCard title="New Wins" value="230" percentage="+25%" />
-        <MetricCard title="Trial:Win Rate" value="9.86%" percentage="+25%" />
-        <MetricCard title="New MRR" value="$25,690" percentage="+8.7%" />
+        <MetricCard title="Latest Application" value="HRT Traders" percentage="Current Stage: OA" />
+        <MetricCard title="Application to Interview Rate %" value="11.43" percentage="Interview scheduled on 09/03/2024" />
+        <MetricCard title="Pending Applications" value="17" percentage="QA/Applications Stage only" />
       </div>
       <div className="flex flex-col md:flex-row justify-between items-center md:items-start">
         <div className="w-full md:w-1/2 p-4">
@@ -57,7 +56,7 @@ const Analytics = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="uv" fill="#8884d8" />
+              <Bar dataKey="NumberOfApplications" fill="#8884d8" />
             </BarChart>
           </ResponsiveContainer>
         </div>
