@@ -14,21 +14,20 @@ import { BarChart, Bar, XAxis, YAxis } from "recharts";
 import "./analytics.css";
 
 const dataPie = [
-  { name: 'Applications', value:35 },
-  { name: 'Rejections', value: 10 },
-  { name: 'Online Assessment', value: 18 },
-  { name: 'Interviews', value: 4 },
-  { name: 'Acceptances', value: 1 },
+  { name: "Applications", value: 35 },
+  { name: "Rejections", value: 10 },
+  { name: "Online Assessment", value: 18 },
+  { name: "Interviews", value: 4 },
+  { name: "Acceptances", value: 1 },
 ];
 
 const dataBar = [
-  { name: 'Fri', NumberOfApplications: 7 },
-  { name: 'Sat', NumberOfApplications: 4 },
-  { name: 'Sun', NumberOfApplications: 3 },
-  { name: 'Mon', NumberOfApplications: 9},
-  { name: 'Tue', NumberOfApplications: 8 },
-  { name: 'Wed', NumberOfApplications: 4 },
-
+  { name: "Fri", NumberOfApplications: 7 },
+  { name: "Sat", NumberOfApplications: 4 },
+  { name: "Sun", NumberOfApplications: 3 },
+  { name: "Mon", NumberOfApplications: 9 },
+  { name: "Tue", NumberOfApplications: 8 },
+  { name: "Wed", NumberOfApplications: 4 },
 ];
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"];
@@ -45,49 +44,44 @@ const MetricCard = ({ title, value, percentage }) => {
       >
         {percentage}
       </div>
-      <div className="metric-footer">
-        Last week data only
-      </div>
+      <div className="metric-footer">Last week data only</div>
     </div>
   );
 };
 
 const Analytics = () => {
   return (
-   <div>
-     <NavBar login={true} />
-    <div className="analytics-dashboard">
-      <h1>Job Application Status Dashboard</h1>
-      <div className="metrics-container">
-        <MetricCard title="Latest Application" value="HRT Traders" percentage="Current Stage: OA" />
-        <MetricCard title="Application to Interview Rate %" value="11.43" percentage="Interview scheduled on 09/03/2024" />
-        <MetricCard title="Pending Applications" value="17" percentage="QA/Applications Stage only" />
-      </div>
-      <div className="flex flex-col md:flex-row justify-between items-center md:items-start">
-        <div className="w-full md:w-1/2 p-4">
-          <ResponsiveContainer width="100%" height={400}>
-            <BarChart data={dataBar}>
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="NumberOfApplications" fill="#8884d8" />
-            </BarChart>
-          </ResponsiveContainer>
+    <div>
+      <NavBar />
+
+      <div className="analytics-dashboard">
+        <h1>Job Application Status Dashboard</h1>
+        <div className="metrics-container">
+          <MetricCard
+            title="Latest Application"
+            value="HRT Traders"
+            percentage="Current Stage: OA"
+          />
+          <MetricCard
+            title="Application to Interview Rate %"
+            value="11.43"
+            percentage="Interview scheduled on 09/03/2024"
+          />
+          <MetricCard
+            title="Pending Applications"
+            value="17"
+            percentage="QA/Applications Stage only"
+          />
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start">
           <div className="w-full md:w-1/2 p-4">
-            <ResponsiveContainer
-              width="100%"
-              height={400}
-              style={{ "padding-top": "30px" }}
-            >
+            <ResponsiveContainer width="100%" height={400}>
               <BarChart data={dataBar}>
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="uv" fill="#8884d8" />
+                <Bar dataKey="NumberOfApplications" fill="#8884d8" />
               </BarChart>
             </ResponsiveContainer>
           </div>
