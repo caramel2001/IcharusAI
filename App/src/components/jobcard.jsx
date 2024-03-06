@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -15,10 +15,47 @@ const JobCard = ({
   positionType = "Fresh/entry level",
   date = "23/01/2024",
   applyUrl = "#",
+  description = "No description available",
+  file,
+  service="llama",
+  api_key
+
 }) => {
+  const [explain, setExplain] = useState('');
+
   const handleApplyClick = () => {
     // Redirect to the apply URL
     window.location.href = applyUrl;
+  };
+  const handleExplainClick = async () => {
+    // Redirect to the apply URL
+    const formData = new FormData();
+    formData.append("resume", file);
+    formData.append("api_key", api_key);
+    formData.append("ai_service", service);
+    formData.append("jd",description)
+    try {
+      const response = await fetch("http://127.0.0.1:8000/explain-record/", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const resp = await response.json();
+      console.log(resp);
+      setExplain(resp)
+
+      // Handle success - perhaps set state with returned job recommendations
+    } catch (error) {
+      console.error("There was an error!", error);
+    }
+   return (
+    <div>{explain}</div>
+   ) ;
+
   };
   return (
     <Card
@@ -62,6 +99,15 @@ const JobCard = ({
           onClick={handleApplyClick}
         >
           Apply
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          sx={{ marginTop: 2 , marginLeft: 1}}
+          onClick={handleExplainClick}
+        >
+          Explain
         </Button>
       </CardContent>
     </Card>

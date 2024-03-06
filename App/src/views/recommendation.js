@@ -9,6 +9,7 @@ import JobList from "../components/joblist";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import TransparentAccordion from "../components/accordion";
 import "./recommendation.css";
+import NavBar from "../components/header";
 
 const Recommendation = (props) => {
   // Styled input component
@@ -18,7 +19,8 @@ const Recommendation = (props) => {
   const [file, setFile] = useState(null);
   const [data, setData] = useState({
     generated_jd: "No Description Generated",
-    job_recommendations: { metadatas: [[]] },
+    job_recommendations: { metadatas: [[]] ,documents: [[]], },
+    
   });
   const handleFileChange = (event) => {
     setFile(event.target.files[0]); // Set the first (and should be only) file
@@ -28,7 +30,7 @@ const Recommendation = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!file || !apiKey) {
+    if (!file || !apiKey && service === "openai") {
       alert("Please select a file and enter your API key.");
       return;
     }
@@ -50,6 +52,10 @@ const Recommendation = (props) => {
       const resp = await response.json();
       console.log(resp);
       setData(resp);
+      console.log("descs")
+      console.log(data["job_recommendations"]['documents']['0']);
+      console.log(data["job_recommendations"]['documents'][0]);
+
       // Handle success - perhaps set state with returned job recommendations
     } catch (error) {
       console.error("There was an error!", error);
@@ -57,39 +63,16 @@ const Recommendation = (props) => {
   };
 
   return (
-    <div className="recommendation-container">
+    <div >
       <Helmet>
         <title>AI Explainable Job Recommendation</title>
         <meta property="og:title" content="AI Explainable Job Recommendation" />
       </Helmet>
-      <div className="recommendation-depth0-frame0">
-        <div className="recommendation-depth1-frame0">
-          <div className="recommendation-depth2-frame0">
-            <div className="recommendation-depth3-frame0">
-              <div className="recommendation-depth4-frame0">
-                <div className="recommendation-depth5-frame0">
-                  <img
-                    src="/external/depth6frame09299-njyu.svg"
-                    alt="Depth6Frame09299"
-                    className="recommendation-depth6-frame0"
-                  />
-                </div>
-                <div className="recommendation-depth5-frame1">
-                  <div className="recommendation-depth6-frame001">
-                    <Button
-                      variant="transparent"
-                      style={{ padding: "0px", textTransform: "none" }}
-                      onClick={() => props.history.push("/")}
-                    >
-                      <span className="recommendation-text">
-                        <span>Career Compass</span>
-                      </span>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div>
+        <div>
+          <div>
+         <NavBar></NavBar>
+         </div>
           <div className="recommendation-depth2-frame1">
             <div className="recommendation-depth3-frame01">
               <div className="recommendation-depth4-frame01">
@@ -211,7 +194,7 @@ const Recommendation = (props) => {
                 </span>
               </div>
               <div style={{ height: "100%", padding: "10px" }}>
-                <JobList jobs={data["job_recommendations"]["metadatas"][0]} />
+                <JobList jobs={data["job_recommendations"]["metadatas"][0] } descriptions={data["job_recommendations"]["documents"][0] } file={file} ai_service={service} api_key={apiKey}  />
               </div>
             </div>
           </div>

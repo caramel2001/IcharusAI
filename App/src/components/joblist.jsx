@@ -2,8 +2,11 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import JobCard from "./jobcard";
 
-const JobList = ({ jobs }) => {
+const JobList = ({ jobs ,descriptions,file ,ai_service,api_key}) => {
+  console.log('in the lists bro')
   console.log(jobs[0]);
+  console.log(descriptions);
+  console.log(descriptions[0])
   // Accept job data as a prop
   return (
     <Grid container spacing={8} justifyContent="left">
@@ -18,7 +21,12 @@ const JobList = ({ jobs }) => {
             positionType={job.jobtype}
             date={job.date}
             applyUrl={job.apply_url}
+            description={descriptions[index]}
+            file={file}
+            ai_service={ai_service}
+            api_key={api_key}
           />
+          
         </Grid>
       ))}
     </Grid>
