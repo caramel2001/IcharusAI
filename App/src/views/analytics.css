@@ -1,0 +1,113 @@
+/* Analytics.css */
+
+.analytics-dashboard {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff; /* Set the background color to white */
+}
+
+.analytics-dashboard h1 {
+  font-size: 24px;
+  margin-bottom: 40px; /* Increased space below the title */
+  text-align: center; /* Center the dashboard title */
+}
+
+.metrics-container {
+  display: flex;
+  justify-content: space-evenly; /* Evenly space out the metric cards horizontally */
+  align-items: flex-start; /* Align items to the start of the flex container */
+  margin-bottom: 40px; /* Add more space below the metric cards */
+  flex-wrap: wrap; /* Wrap onto new rows as needed */
+}
+
+.metric-card {
+  background-color: #f9f9f9; /* Card background color */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  flex: 1; /* Allow the card to grow to fill available space */
+  min-width: 0; /* Prevent the flex item from spilling out */
+  margin: 20px; /* Tailwind equivalent: m-5 */
+}
+.metric-card:not(:last-child) {
+  margin-right: 0; /* No need for this as margin is handled above */
+}
+
+.metric-title, .metric-value, .metric-percentage, .metric-footer {
+  color: #555;
+}
+
+.metric-value {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.metric-percentage {
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  color: #4caf50; /* Color for positive numbers */
+  margin: 10px 0;
+}
+
+.metric-footer {
+  font-size: 0.8em;
+  color: #999;
+  margin-top: 10px;
+}
+
+.pie-chart-wrapper {
+  display: flex;
+  justify-content: center; /* Center the pie chart wrapper */
+  align-items: center;
+  padding: 20px;
+}
+
+.recharts-responsive-container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Background color for pie chart */
+}
+
+.recharts-legend-wrapper {
+  display: flex;
+  flex-direction: column; /* Align legend items vertically */
+  align-items: center; /* Center the legend items */
+}
+
+/* Tooltip custom styling */
+.recharts-tooltip-wrapper {
+  background-color: #fff; /* White background for the tooltip */
+  border-radius: 8px; /* Rounded corners for the tooltip */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for the tooltip */
+}
+
+.bar-chart-wrapper {
+  display: flex;
+  justify-content: center; /* Center the bar chart wrapper */
+  align-items: center;
+  padding: 20px; /* Tailwind equivalent: p-5 */
+}
+
+@media (max-width: 768px) {
+  .metrics-container {
+    flex-direction: column; /* Stack cards vertically on smaller screens */
+    align-items: center; /* Center cards on smaller screens */
+  }
+
+  .metric-card {
+    flex: 0 1 100%; /* Full width cards on smaller screens */
+    margin: 20px 0; /* Only vertical margin */
+  }
+
+  .pie-chart-wrapper {
+    width: 100%; /* Full width pie chart wrapper on smaller screens */
+  }
+}
+
+  
