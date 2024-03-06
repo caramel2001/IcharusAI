@@ -7,6 +7,7 @@ import os
 # Assuming your Recommendation class is updated elsewhere in your project
 from jobTracker.recommendation import Recommendation
 from jobTracker.track import update_track_data, get_track_data, delete_track_data
+from jobTracker.explain import explain_openai_gpt
 
 app = FastAPI()
 
@@ -65,6 +66,10 @@ def search_jobs(
 
     return {"job_recommendations": job_recommendations}
 
+@app.post("/explain-record/")
+def explain_record(    jd: str = Form(...),resume_text: str = Form(...), ai_service: str = Form("llama"),api_key: Optional[str] = Form(None)):
+    explain_data = explain_openai_gpt(jd_text=jd, res=resume_text, ai_service=ai_service, api_key=api_key)
+    return explain_data
 
 @app.post("/download-models/")
 def create_track():
