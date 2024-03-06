@@ -60,7 +60,35 @@ def search_jobs(
 
     return {"job_recommendations": job_recommendations}
 
-# Other endpoints remain unchanged...
+
+@app.post("/download-models/")
+def create_track():
+
+    return "success"
+
+
+@app.post("/update-records/")
+async def update_track(
+    gmail_username: str = Form(...),
+    gmail_password: str = Form(...),
+):
+    track_data = update_track_data(
+        gmail_username=gmail_username,
+        gmail_api_key=gmail_password,
+    )
+    return track_data
+
+
+@app.get("/get-records/")
+async def get_track():
+    track_data = get_track_data()
+    return track_data
+
+
+@app.post("/delete-record/")
+def delete_track(index: int):
+    track_data = delete_track_data(index)
+    return track_data
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
