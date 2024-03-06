@@ -1,0 +1,55 @@
+[
+  {
+    "label": 1,
+    "subject": "Quick Hello!",
+    "body": "Hi [Friend's Name]!\n\nJust wanted to drop a quick hello and see how you're doing. Hope everything is going well on your end. Let's catch up soon!\n\nBest,\n[Your Name]"
+  },
+  {
+    "label": 1,
+    "subject": "How Are You?",
+    "body": "Hey [Friend's Name],\n\nIt's been a while since we caught up. How are things going for you? I'd love to hear about what's new in your life.\n\nTake care,\n[Your Name]"
+  },
+  {
+    "label": 1,
+    "subject": "Family Update",
+    "body": "Hi [Friend's Name],\n\nI hope this email finds you in good spirits. We've been busy on this end with [mention something interesting or funny]. How about your family? Any exciting updates?\n\nLooking forward to hearing from you,\n[Your Name]"
+  },
+  {
+    "label": 1,
+    "subject": "Picture Sharing Time!",
+    "body": "Hello [Friend's Name],\n\nI stumbled upon some cute pictures of [your children's names] and couldn't resist sharing. They're growing up so fast! 😊 Let me know when you have a moment to catch up.\n\nWarm regards,\n[Your Name]"
+  },
+  {
+    "label": 1,
+    "subject": "Weekend Plans?",
+    "body": "Hi [Friend's Name],\n\nAny exciting plans for the weekend? We should get together and catch up. It's been too long since our last hangout!\n\nCheers,\n[Your Name]"
+  },
+  {
+    "label": 1,
+    "subject": "Thinking of You",
+    "body": "Dear [Friend's Name],\n\nJust wanted to drop a line and let you know I've been thinking of you. How's everything going? Let's plan a meetup soon!\n\nWarmest regards,\n[Your Name]"
+  },
+  {
+    "label": 1,
+    "subject": "Random Question",
+    "body": "Hi [Friend's Name],\n\nRandom question: If you could travel anywhere right now, where would you go? I'm in a bit of a daydreaming mood. Share your thoughts!\n\nBest,
+  [Your Name]"
+  },
+  {
+    "label": 1,
+    "subject": "Share Your Weekend Highlights!",
+    "body": "Hello [Friend's Name],\n\nHope you had a fantastic weekend! I'd love to hear about the highlights. Share some stories when you have a moment.\n\nLooking forward to catching up,\n[Your Name]"
+  },
+  {
+    "label": 1,
+    "subject": "Book Recommendation",
+    "body": "Hi [Friend's Name],\n\nI just finished reading an amazing book and thought of you. It's [book title]. Have you read it? Let me know what you think!\n\nHappy reading,
+  [Your Name]"
+  },
+  {
+    "label": 1,
+    "subject": "Virtual Coffee Date?",
+    "body": "Hey [Friend's Name],\n\nMissing our coffee dates! How about a virtual one soon? We can catch up over a cup of coffee and share some laughs.\n\nLooking forward to it,
+  [Your Name]"
+  }
+]

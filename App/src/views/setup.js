@@ -1,61 +1,61 @@
-import React from "react";
-import { Button, TextField } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Button,
+  TextField,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
-
+import NavBar from "../components/header";
 import "./setup.css";
 
 const Setup = (props) => {
   let history = useHistory();
-  const [name, setName] = React.useState("");
-  const [username, setUsername] = React.useState(null);
-  const [password, setPassword] = React.useState(null);
-  const [apiKey, setApiKey] = React.useState(null);
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [service, setService] = useState("openai"); // State to store the selected service
+  const [apiKey, setApiKey] = useState("");
 
   const handleClick = () => {
+    console.log("Name: ", name);
+    console.log("Username: ", username);
+    console.log("Password:", password);
+    console.log("Service: ", service);
+    console.log("API Key: ", apiKey);
+
     props.setLogin(true); // Set the state to false
     props.setName(name);
     props.setUsername(username);
     props.setPassword(password);
-    props.setApiKey(apiKey);
+    if (service === "openai") {
+      props.setApiKey(apiKey);
+    }
+    props.setService(service);
 
     history.push("/"); // Redirect to home page
   };
+
+  const handleServiceChange = (event) => {
+    setService(event.target.value);
+    if (event.target.value !== "openai") {
+      setApiKey(null); // Clear API Key if not using OpenAI
+    }
+  };
+
   return (
-    <div className="setup-container">
+    <div>
       <Helmet>
         <title>Setup Your Profile</title>
         <meta property="og:title" content="Career Compass" />
       </Helmet>
+      <NavBar login={false} />
       <div className="setup-setup-page">
         <div className="setup-depth0-frame0">
           <div className="setup-depth1-frame0">
-            <div className="setup-depth2-frame0">
-              <div className="setup-depth3-frame0">
-                <div className="setup-depth4-frame0">
-                  <div className="setup-depth5-frame0">
-                    <img
-                      src="/external/depth6frame059-0tuh.svg"
-                      alt="Depth6Frame059"
-                      className="setup-depth6-frame0"
-                    />
-                  </div>
-                  <div className="setup-depth5-frame1">
-                    <div className="setup-depth6-frame01">
-                      <Button
-                        variant="transparent"
-                        style={{ padding: "0px", textTransform: "none" }}
-                        onClick={() => props.history.push("/")}
-                      >
-                        <span className="setup-text">
-                          <span>Career Compass</span>
-                        </span>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div className="setup-depth2-frame1">
               <div className="setup-depth3-frame01">
                 <div className="setup-depth4-frame01">
@@ -134,18 +134,42 @@ const Setup = (props) => {
                   <div className="setup-depth5-frame06">
                     <div className="setup-depth6-frame05">
                       <div className="setup-depth7-frame03">
-                        <span className="setup-text18">
-                          <span>OpenAI API Key</span>
-                        </span>
+                        <FormControl component="fieldset">
+                          <RadioGroup
+                            row
+                            aria-label="service"
+                            name="service-selection"
+                            value={service}
+                            onChange={handleServiceChange}
+                          >
+                            <FormControlLabel
+                              value="openai"
+                              control={<Radio />}
+                              label="OpenAI"
+                            />
+                            <FormControlLabel
+                              value="llama"
+                              control={<Radio />}
+                              label="Llama 2"
+                            />
+                          </RadioGroup>
+                        </FormControl>
+                        {service === "openai" && (
+                          <div className="setup-depth4-frame">
+                            {" "}
+                            {/* Adjust the class names as needed */}
+                            <TextField
+                              fullWidth
+                              size="small"
+                              variant="filled"
+                              label="OpenAI API Key"
+                              type="password"
+                              value={apiKey}
+                              onChange={(e) => setApiKey(e.target.value)}
+                            />
+                          </div>
+                        )}
                       </div>
-                      <TextField
-                        fullWidth
-                        size="small"
-                        variant="filled"
-                        label="API Key"
-                        type="password"
-                        onChange={(e) => setApiKey(e.target.value)}
-                      />
                     </div>
                   </div>
                 </div>

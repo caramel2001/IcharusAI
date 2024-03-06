@@ -22,7 +22,7 @@ export function Icharus() {
           }}
           className="mt-12 bg-gradient-to-br from-slate-500 to-slate-800 py-4 bg-clip-text text-center text-7xl font-medium tracking-tight text-transparent md:text-7xl"
         >
-          Icharus AI <br /> 
+          Icarus AI <br /> 
          {/* # div of small text size */}
          <div className="text-3xl flex">Soar towards your career goals
          <RocketLaunchIcon className="h-8 w-8 text-gray-400 ml-2" />
@@ -48,7 +48,7 @@ export const LampContainer = ({ children, className }) =>
   return (
     <div
       className={cn(
-        "relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-slate-50 w-full z-0",
+        "relative flex min-h-screen flex-col items-center justify-center overflow-hidden w-full z-0 bg-student bg-contain",
         className
       )}
     >

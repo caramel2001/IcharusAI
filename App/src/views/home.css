@@ -324,8 +324,8 @@
   align-items: flex-start;
   flex-shrink: 0;
   border-radius: 12px;
-  background-size: cover;
-  background-image: url("/external/tq_nmbl46awck-iero-1000w.png");
+  background-size: contain;
+  background-image: url("/external/bg.png");
 }
 .home-depth7-frame02 {
   gap: 32px;
@@ -373,7 +373,7 @@
   flex-direction: column;
 }
 .home-text12 {
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255, 255, 255);
   height: auto;
   font-size: 48px;
   font-style: Black;
@@ -650,7 +650,7 @@
   flex-shrink: 0;
   border-radius: 12px;
   background-size: cover;
-  background-image: url("/external/tq_wtk_lupdao-7mws-1500h.png");
+  background-image: url("/external/Designer.jpeg");
 }
 .home-depth8-frame12 {
   width: 301.328125px;
@@ -733,7 +733,8 @@
   flex-shrink: 0;
   border-radius: 12px;
   background-size: cover;
-  background-image: url("/external/tq_hftdhwz65x-vfdh-1500h.png");
+  background-image: url("/external/student_job.png");
+  background-size: cover;
 }
 .home-depth8-frame13 {
   width: 301.328125px;
@@ -816,7 +817,7 @@
   flex-shrink: 0;
   border-radius: 12px;
   background-size: cover;
-  background-image: url("/external/tq_sxjwdyzbhd-j85r-1500h.png");
+  background-image: url("/external/Designer (1).jpeg");
 }
 .home-depth8-frame14 {
   width: 301.34375px;
@@ -909,7 +910,7 @@
   flex-shrink: 0;
   border-radius: 12px;
   background-size: cover;
-  background-image: url("/external/tq_t-zvx0nooi-tgca-500h.png");
+  background-image: url("external/job_search.png");
 }
 .home-depth5-frame13 {
   gap: 12px;
@@ -941,7 +942,7 @@
   flex-shrink: 0;
   border-radius: 12px;
   background-size: cover;
-  background-image: url("/external/tq_kpfxkqz3w1-lh8-500h.png");
+  background-image: url("/external/student_job.png");
 }
 .home-depth4-frame3 {
   width: 960px;

@@ -1,8 +1,17 @@
-import React from 'react';
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer, Sector } from 'recharts';
-import { BarChart, Bar, XAxis, YAxis } from 'recharts';
+import React from "react";
+import NavBar from "../components/header";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  Sector,
+} from "recharts";
+import { BarChart, Bar, XAxis, YAxis } from "recharts";
 
-import './analytics.css';
+import "./analytics.css";
 
 const dataPie = [
   { name: 'Applications', value:35 },
@@ -19,17 +28,21 @@ const dataBar = [
   { name: 'Mon', NumberOfApplications: 9},
   { name: 'Tue', NumberOfApplications: 8 },
   { name: 'Wed', NumberOfApplications: 4 },
+
 ];
 
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"];
 
 const MetricCard = ({ title, value, percentage }) => {
   return (
     <div className="metric-card">
       <div className="metric-title">{title}</div>
       <div className="metric-value">{value}</div>
-      <div className={`metric-percentage ${percentage.startsWith('-') ? 'negative' : 'positive'}`}>
+      <div
+        className={`metric-percentage ${
+          percentage.startsWith("-") ? "negative" : "positive"
+        }`}
+      >
         {percentage}
       </div>
       <div className="metric-footer">
@@ -41,6 +54,8 @@ const MetricCard = ({ title, value, percentage }) => {
 
 const Analytics = () => {
   return (
+   <div>
+     <NavBar login={true} />
     <div className="analytics-dashboard">
       <h1>Job Application Status Dashboard</h1>
       <div className="metrics-container">
@@ -60,26 +75,50 @@ const Analytics = () => {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="w-full md:w-1/2 p-4">
-          <ResponsiveContainer width="100%" height={400}>
-            <PieChart>
-              <Pie
-                data={dataPie}
-                innerRadius={60}
-                outerRadius={80}
-                fill="#8884d8"
-                paddingAngle={5}
-                dataKey="value"
-                label
-              >
-                {dataPie.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend layout="vertical" verticalAlign="middle" align="right" />
-            </PieChart>
-          </ResponsiveContainer>
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start">
+          <div className="w-full md:w-1/2 p-4">
+            <ResponsiveContainer
+              width="100%"
+              height={400}
+              style={{ "padding-top": "30px" }}
+            >
+              <BarChart data={dataBar}>
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="uv" fill="#8884d8" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="w-full md:w-1/2 p-4">
+            <ResponsiveContainer width="100%" height={400}>
+              <PieChart>
+                <Pie
+                  data={dataPie}
+                  innerRadius={60}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  paddingAngle={5}
+                  dataKey="value"
+                  label
+                >
+                  {dataPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend
+                  layout="vertical"
+                  verticalAlign="middle"
+                  align="right"
+                />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
     </div>
