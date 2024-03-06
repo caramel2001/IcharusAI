@@ -1,0 +1,52 @@
+[
+  {
+    "label": 0,
+    "subject": "Important Account Update: Action Required",
+    "body": "Dear [Your Name],\n\nWe recently detected unusual activity on your account. For your security, we request that you update your password by clicking on the link below. If you did not initiate this action, please contact our support immediately.\n\n[Update Password Link]\n\nBest regards,\nThe Security Team"
+  },
+  {
+    "label": 0,
+    "subject": "Your Monthly Newsletter Subscription",
+    "body": "Hi [Your Name],\n\nThank you for subscribing to our monthly newsletter! In this edition, we share exciting updates, expert tips, and exclusive offers. We hope you enjoy the content. If you have any suggestions or topics you'd like us to cover, feel free to reply to this email. Happy reading!\n\nBest regards,\nThe Newsletter Team"
+  },
+  {
+    "label": 0,
+    "subject": "Exclusive Offers Inside: Limited Time Only!",
+    "body": "Hello [Your Name],\n\nAs a valued customer, we're excited to offer you exclusive discounts on our latest products. Don't miss out on these limited-time offers! Visit our website or use code [DISCOUNTCODE] at checkout. Thank you for choosing us for your shopping needs.\n\nSincerely,\nThe Sales Team"
+  },
+  {
+    "label": 0,
+    "subject": "Your Recent Purchase Confirmation",
+    "body": "Dear [Your Name],\n\nThank you for your recent purchase with us! Your order [ORDERNUMBER] has been confirmed, and it will be shipped to you shortly. You can track the shipment using the link provided. If you have any questions or concerns, please contact our customer support.\n\nBest regards,\nThe Customer Service Team"
+  },
+  {
+    "label": 0,
+    "subject": "Stay Informed: Weekly News Digest",
+    "body": "Hi [Your Name],\n\nWelcome to our weekly news digest! Stay informed with the latest headlines, trends, and insights. Whether you're interested in business, technology, or lifestyle, we've got you covered. Enjoy your reading and feel free to share your thoughts with us!\n\nBest regards,\nThe Editorial Team"
+  },
+  {
+    "label": 0,
+    "subject": "Your Flight Itinerary for [DATE]",
+    "body": "Dear [Your Name],\n\nYour flight itinerary for [DATE] is attached to this email. Please review the details, including departure and arrival times, gate information, and baggage allowances. If you have any questions or need assistance, contact our customer service. Have a safe and pleasant journey!\n\nSincerely,\nThe Airline Team"
+  },
+  {
+    "label": 0,
+    "subject": "Invitation to Exclusive Event: RSVP Today!",
+    "body": "Hello [Your Name],\n\nYou are cordially invited to our exclusive event on [DATE]. Join us for an evening of networking, entertainment, and valuable discussions. RSVP today to secure your spot. We look forward to welcoming you!\n\nBest regards,\nThe Event Planning Team"
+  },
+  {
+    "label": 0,
+    "subject": "Important: Update Your Privacy Settings",
+    "body": "Dear [Your Name],\n\nIn accordance with our updated privacy policy, we encourage you to review and update your privacy settings. Your privacy is important to us, and we want to ensure you have control over your data. Visit our website or click the link below to manage your settings.\n\n[Privacy Settings Link]\n\nSincerely,\nThe Privacy Team"
+  },
+  {
+    "label": 0,
+    "subject": "Get Ready for [SEASON] with Our New Collection",
+    "body": "Hi [Your Name],\n\nExciting news! Our new [SEASON] collection has arrived. Explore the latest trends, vibrant colors, and must-have styles. Visit our stores or shop online to elevate your wardrobe for the season. Happy shopping!\n\nBest regards,\nThe Fashion Team"
+  },
+  {
+    "label": 0,
+    "subject": "New Job Opportunities Match Your Profile",
+    "body": "Hello [Your Name],\n\nGreat news! We've found new job opportunities that match your profile. Log in to your account to view and apply. Don't miss out on these exciting career prospects. We wish you success in your job search!\n\nBest regards,\nThe Job Matching Team"
+  }
+]

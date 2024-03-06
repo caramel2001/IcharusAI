@@ -6,10 +6,13 @@ import TextField from "@mui/material/TextField";
 import JobApplicationTracker from "../components/tracker";
 import responseEx from "../components/response.json";
 import CircularProgress from "@mui/material/CircularProgress"; // Import MUI CircularProgress for loading indicator
-
+import NavBar from "../components/header";
+import CreateProductModal from "../components/add_modal";
+import { useHistory } from "react-router-dom";
 import "./tracking.css";
 
 const Tracking = (props) => {
+  let history = useHistory();
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -52,6 +55,7 @@ const Tracking = (props) => {
       return;
     }
     setIsLoading(true); // Start loading
+    console.log(isLoading);
     const formData = new FormData();
     formData.append("gmail_username", props.username);
     formData.append("gmail_password", props.password);
@@ -83,92 +87,39 @@ const Tracking = (props) => {
   };
 
   return (
-    <div className="tracking-container">
+    <div>
       <Helmet>
-        <title>Tracking - Outlandish Past Hare</title>
-        <meta property="og:title" content="Tracking - Outlandish Past Hare" />
+        <title>Job Tracking</title>
+        <meta property="og:title" content="Icarus AI" />
       </Helmet>
-      <div className="tracking-tracking">
-        <div className="tracking-depth0-frame0">
-          <div className="tracking-depth1-frame0">
-            <div className="tracking-depth2-frame0">
-              <div className="tracking-depth3-frame0">
-                <div className="tracking-depth4-frame1">
-                  <div className="tracking-depth5-frame0">
-                    <img
-                      src="/external/depth6frame01512-phla.svg"
-                      alt="Depth6Frame01512"
-                      className="tracking-depth6-frame0"
-                    />
-                  </div>
-                  <div className="home-depth6-frame001">
-                    <Button
-                      variant="transparent"
-                      style={{ padding: "0px", textTransform: "none" }}
-                      onClick={() => props.history.push("/")}
-                    >
-                      <span className="tracking-text">
-                        <span>Career Compass</span>
-                      </span>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-              <div className="tracking-depth3-frame1">
-                <div className="tracking-depth4-frame0">
-                  <div className="tracking-depth5-frame01">
-                    <div className="tracking-depth6-frame002">
-                      <div className="tracking-depth7-frame0">
-                        <span className="tracking-text02">
-                          <Button variant="inherit">Generate Chart</Button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="tracking-depth5-frame11">
-                    <div className="tracking-depth6-frame003">
-                      <div className="tracking-depth7-frame001">
-                        <span className="tracking-text04">
-                          <Button variant="inherited">Add Application</Button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="tracking-depth5-frame2">
-                    <div className="tracking-depth6-frame004">
-                      <img
-                        src="/external/depth7frame01592-715.svg"
-                        alt="Depth7Frame01592"
-                        className="tracking-depth7-frame002"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <NavBar login={true} />
+      <div className="bg-slate-50 min-h-screen">
+        <div>
+          <div>
             <div className="tracking-depth2-frame1">
-              <div className="tracking-depth3-frame01">
-                <div className="tracking-depth4-frame01">
-                  <div className="tracking-depth5-frame12">
-                    <div className="tracking-depth6-frame006">
-                      <div className="tracking-depth7-frame004">
-                        <div className="tracking-depth8-frame02">
-                          <span className="tracking-text08">
-                            <Button variant="inherit" onClick={updateData}>
-                              Update Data
-                            </Button>
-                            {/* {isLoading ? <CircularProgress /> : null} */}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    {/* {isLoading ? null : <CircularProgress />} */}
-                    <div style={{ padding: "10px" }}>
-                      {isLoading ? <CircularProgress /> : null}
-                    </div>
-                  </div>
+              <div className="flex flex-col gap-5">
+                <button
+                  className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white text-sm"
+                  onClick={updateData}
+                >
+                  Update Data
+                </button>
+                <div className="w-0">
+                  {isLoading ? <CircularProgress /> : null}
+                </div>
+                <div>
+                  <button
+                    className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white text-sm"
+                    onClick={() => history.push("/analytics")}
+                  >
+                    Generate Chart
+                  </button>
+                </div>
+                <div>
+                  <CreateProductModal setJobs={setJobs} />
                 </div>
               </div>
+
               <div className="tracking-depth3-frame11">
                 <div className="tracking-depth4-frame02">
                   <div className="tracking-depth5-frame03">

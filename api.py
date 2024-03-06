@@ -6,7 +6,12 @@ import os
 
 # Assuming your Recommendation class is updated elsewhere in your project
 from jobTracker.recommendation import Recommendation
-from jobTracker.track import update_track_data, get_track_data, delete_track_data
+from jobTracker.track import (
+    update_track_data,
+    get_track_data,
+    delete_track_data,
+    TrackFile,
+)
 from jobTracker.explain import explain_openai_gpt
 
 app = FastAPI()
@@ -66,6 +71,7 @@ def search_jobs(
 
     return {"job_recommendations": job_recommendations}
 
+
 @app.post("/explain-record/")
 async def explain_record(    jd: str = Form(...),resume: UploadFile = File(...), ai_service: str = Form("llama"),api_key: Optional[str] = Form(None)):
     print(ai_service,"ai_service called")
@@ -74,7 +80,9 @@ async def explain_record(    jd: str = Form(...),resume: UploadFile = File(...),
         buffer.write(await resume.read())
         
     explain_data = explain_openai_gpt(jd_text=jd, res=temp_file_path, ai_service=ai_service, api_key=api_key)
+
     return explain_data
+
 
 @app.post("/download-models/")
 def create_track():
@@ -104,6 +112,23 @@ async def get_track():
 def delete_track(index: int):
     track_data = delete_track_data(index)
     return track_data
+
+
+@app.post("/add-record/")
+def add_track(
+    title: str,
+    company: str,
+    stage: str,
+    location: str,
+):
+    stage_map = {"Applied": 0, "OA": 1, "Interview": 2, "Offer": 3, "Rejection": 4}
+    stage = stage_map[stage]
+    rejected = 1 if stage == 4 else 0
+    track = TrackFile()
+    track = track.add_record(
+        title=title, company=company, stage=stage, rejected=rejected, location=location
+    )
+    return track.to_dict(orient="records")
 
 
 if __name__ == "__main__":
