@@ -16,7 +16,7 @@ class Recommendation:
         if self.ai_service == 'openai':
             self.client = OpenAI(api_key=api_key)
         elif self.ai_service == 'llama':
-            self.bedrock_runtime_client = boto3.client('bedrock',region_name='us-west-2', aws_access_key_id='AKIAZ7SUIREX75EJUIUT', aws_secret_access_key='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')
+            self.bedrock_runtime_client = boto3.client('bedrock-runtime',region_name='us-east-1', aws_access_key_id='AKIAZ7SUIREX75EJUIUT', aws_secret_access_key='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')
         else:
             raise ValueError("Invalid AI service. Choose 'openai' or 'llama'.")
         self.file_path = os.path.join(os.getcwd(), "data/jd_vectordb")

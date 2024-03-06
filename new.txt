@@ -1,0 +1,6 @@
+python-docx
+fastapi
+uvicorn
+chromadb
+setfit
+gdown

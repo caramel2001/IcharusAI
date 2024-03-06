@@ -3,9 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 import uvicorn
 import os
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 # Assuming your Recommendation class is updated elsewhere in your project
 from jobTracker.recommendation import Recommendation
 
