@@ -6,6 +6,7 @@ import os
 
 # Assuming your Recommendation class is updated elsewhere in your project
 from jobTracker.recommendation import Recommendation
+from jobTracker.track import update_track_data, get_track_data, delete_track_data
 
 app = FastAPI()
 
