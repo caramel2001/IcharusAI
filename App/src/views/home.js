@@ -3,14 +3,17 @@ import { Button } from "@mui/material";
 import { Helmet } from "react-helmet";
 import { Icharus } from "../components/lamps";
 import NavBar from "../components/header";
+import {Input} from "../components/input";
 import "./home.css";
 
 const Home = (props) => {
   console.log(props);
   return (
     <div>
+
       <NavBar login={props.login} />
       <Icharus />
+
       <Helmet>
         <title>Career Compass</title>
         <meta property="og:title" content="Career Compass" />

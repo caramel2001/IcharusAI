@@ -20,6 +20,8 @@ const App = () => {
   const [password, setPassword] = useState(null);
   const [name, setName] = useState("");
   const [apiKey, setApiKey] = useState(null);
+  const [service, setService] = useState('openai'); // State to store the selected service
+
 
   return (
     // <Recommendation />
@@ -40,6 +42,7 @@ const App = () => {
               setName={setName}
               setPassword={setPassword}
               setUsername={setUsername}
+              setService={setService}
             />
           )}
           exact
