@@ -26,9 +26,9 @@ class Explain:
         
         # Whether jd was recommended to the user or not
         if(rec==True):
-            content = "The resume submitted by the user is:\n {res}\n As a job recommendation system, give reasons why the user needs to apply for the role with the following job description and job requirements:{jd}".format(res=self.text,jd=jd_text)
+            content = "You are an Explainable Job Recommendation system. The resume submitted by the user is:\n {res}\n Please give reasons why the user was recommended the role with the following job description and job requirements:{jd}\n Do not use more than 3 lines. Use passive voice for the response".format(res=self.text,jd=jd_text)
         else:
-            content = "The resume submitted by the user is:\n {res}\n As a job recommendation system, give reasons why the user should not apply for the role with the following job description and job requirements:{jd}".format(res=self.text,jd=jd_text)
+            content = "You are an Explainable Job Recommendation system. The resume submitted by the user is:\n {res}\n Please give reasons why the user was not recommended the role with the following job description and job requirements:{jd} Do not use more than 3 lines. Use passive voice for the response".format(res=self.text,jd=jd_text)
 
         try:
             response = self.client.chat.completions.create(
