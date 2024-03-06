@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,12 +16,11 @@ import NotFound from "./views/not-found";
 
 const App = () => {
   const [login, setLogin] = useState(false);
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [apiKey, setApiKey] = useState(null);
-  const [service, setService] = useState('openai'); // State to store the selected service
-
+  const [apiKey, setApiKey] = useState("");
+  const [service, setService] = useState("openai"); // State to store the selected service
 
   return (
     // <Recommendation />
@@ -56,7 +55,9 @@ const App = () => {
           path="/tracking"
         />
         <Route
-          component={(props) => <Recommendation {...props} apiKey={apiKey} />}
+          component={(props) => (
+            <Recommendation {...props} apiKey={apiKey} service={service} />
+          )}
           exact
           path="/recommendation"
         />
@@ -67,4 +68,5 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("app"));
+const root = ReactDOM.createRoot(document.getElementById("app"));
+root.render(<App />);

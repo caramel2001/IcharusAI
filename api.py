@@ -18,6 +18,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
+
 @app.post("/recommend-jobs/")
 async def recommend_jobs(
     resume: UploadFile = File(...),
@@ -48,14 +49,17 @@ async def recommend_jobs(
 
     return {"generated_jd": generated_jd, "job_recommendations": job_recommendations}
 
+
 @app.post("/search-jobs/")
 def search_jobs(
     jd: str = Form(...),
-    ai_service: str = Form('openai'),  # Default to 'openai' for backward compatibility
+    ai_service: str = Form("openai"),  # Default to 'openai' for backward compatibility
     api_key: Optional[str] = Form(None),  # Make API key optional
 ):
     # Initialize with minimal params as this method only uses the search functionality
-    recommendation_engine = Recommendation(resume="./", ai_service=ai_service, api_key=api_key)
+    recommendation_engine = Recommendation(
+        resume="./", ai_service=ai_service, api_key=api_key
+    )
 
     job_recommendations = recommendation_engine.search_jd(jd, k=10)
 
@@ -90,6 +94,7 @@ async def get_track():
 def delete_track(index: int):
     track_data = delete_track_data(index)
     return track_data
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

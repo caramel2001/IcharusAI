@@ -24,6 +24,7 @@ const Recommendation = (props) => {
     setFile(event.target.files[0]); // Set the first (and should be only) file
   };
   const apiKey = props.apiKey;
+  const service = props.service;
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -34,8 +35,8 @@ const Recommendation = (props) => {
 
     const formData = new FormData();
     formData.append("resume", file);
-    formData.append("openai_key", apiKey);
-
+    formData.append("api_key", apiKey);
+    formData.append("ai_service", service);
     try {
       const response = await fetch("http://127.0.0.1:8000/recommend-jobs/", {
         method: "POST",
