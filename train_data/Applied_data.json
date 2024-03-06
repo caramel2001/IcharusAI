@@ -1,0 +1,102 @@
+[
+  {
+    "label": 0,
+    "subject": "Thank You for Your Job Application",
+    "body": "Dear John Smith,\n\nWe sincerely appreciate the time and effort you invested in applying for the Software Engineer position at ABC Tech Solutions. Your application is now under careful review, and we will contact you soon regarding the next steps in our hiring process.\n\nThank you for considering ABC Tech Solutions as your potential employer.\n\nBest regards,\nEmily Johnson\nHR Manager\nABC Tech Solutions"
+  },
+  {
+    "label": 0,
+    "subject": "Big Thanks for Your Application!",
+    "body": "Hi Alex Thompson,\n\nWe just wanted to drop a quick note to express our gratitude for your recent application for the Marketing Coordinator position at Innovate Marketing Agency. We've received your information and are excited about the possibility of having you on our team!\n\nStay tuned for updates on the next steps. We're looking forward to the possibility of working together.\n\nWarm regards,\nSarah Miller\nTalent Acquisition Specialist\nInnovate Marketing Agency"
+  },
+  {
+    "label": 0,
+    "subject": "Confirmation of Your Job Application",
+    "body": "Hello Jessica Brown,\n\nThis is to confirm that we have received your application for the Data Analyst position at XYZ Analytics. Thank you for your interest in joining our team. Our hiring team will carefully review your credentials, and you can expect to hear from us regarding the status of your application shortly.\n\nBest,\nMichael Davis\nHiring Manager\nXYZ Analytics"
+  },
+  {
+    "label": 0,
+    "subject": "Exciting Times Ahead – Thanks for Applying!",
+    "body": "Hey Samantha Garcia,\n\nYour application for the Graphic Designer position at Creative Designs Studio has brightened our day! Thanks for sharing your skills and experience with us. Our team is looking forward to diving into the details and discovering the potential match.\n\nCheers,\nBrandon Lewis\nCreative Director\nCreative Designs Studio"
+  },
+  {
+    "label": 0,
+    "subject": "Acknowledgment of Your Application",
+    "body": "Dear Daniel Wilson,\n\nWe acknowledge receipt of your application for the Financial Analyst position at Global Investments Corp. Your qualifications are currently being reviewed, and we will contact you with further details shortly.\n\nThank you for your interest in Global Investments Corp.\n\nSincerely,\nOlivia Turner\nHR Coordinator\nGlobal Investments Corp."
+  },
+  {
+    "label": 0,
+    "subject": "Your Application Is in Good Hands",
+    "body": "Hi Rachel Miller,\n\nThank you for taking the time to apply for the Project Manager position at Stellar Solutions. We're impressed with your background and are eager to explore your potential contribution to our team. Stay tuned for updates, and we wish you the best in the selection process.\n\nRegards,\nEthan Adams\nHR Director\nStellar Solutions"
+  },
+  {
+    "label": 0,
+    "subject": "Appreciation for Your Specialized Skills",
+    "body": "Dear Kyle Anderson,\n\nWe want to express our gratitude for your recent application for the UX Designer position at Tech Innovations Inc. Your expertise in user experience design caught our attention, and we look forward to delving deeper into how your skills align with our needs.\n\nBest regards,\nVictoria Foster\nRecruitment Manager\nTech Innovations Inc."
+  },
+  {
+    "label": 0,
+    "subject": "Thank You – Excited to Explore the Possibilities!",
+    "body": "Hi Lily Thompson,\n\nYour application for the Sales Representative position at Dynamic Solutions is received with enthusiasm. We value innovation and commitment, and we're excited about the prospect of having you contribute to our dynamic culture. Stay tuned for updates!\n\nBest,\nHenry Turner\nCEO\nDynamic Solutions"
+  },
+  {
+    "label": 0,
+    "subject": "Thank You for Your Meticulous Application",
+    "body": "Dear Oliver Davis,\n\nWe appreciate the care and detail you put into your application for the Human Resources Manager position at People First Company. Your thoroughness does not go unnoticed, and we're eager to delve into your qualifications further.\n\nWarm regards,\nSophia Clark\nHR Director\nPeople First Company"
+  },
+  {
+    "label": 0,
+    "subject": "Your Application – Next Steps",
+    "body": "Hello Emma Baker,\n\nThank you for submitting your application for the Sales Associate position at Connect Retail. We're currently reviewing applications, and you can expect to hear from us regarding the next steps within the next two weeks.\n\nBest,\nRobert Miller\nHiring Manager\nConnect Retail"
+  },
+  {
+    "label": 1,
+    "subject": "Acknowledgment of Application: Software Engineer Position",
+    "body": "Dear [Applicant Name],\n\nWe acknowledge the receipt of your application for the Software Engineer position. Your interest in joining our team is appreciated. Our hiring team will carefully review your qualifications, and if your profile matches our requirements, we will be in touch for the next steps. Thank you for considering a career with [Company Name].\n\nBest regards,\n[Company Name] Talent Acquisition Team"
+  },
+  {
+    "label": 1,
+    "subject": "Confirmation of Application: Marketing Specialist Role",
+    "body": "Dear [Applicant Name],\n\nThank you for expressing your interest in the Marketing Specialist role at [Company Name]. We have received your application and will be conducting a thorough review of your qualifications. If you are shortlisted, our team will reach out to you for further discussions. We appreciate your time and look forward to the possibility of working together.\n\nKind regards,\n[Company Name] Recruitment Team"
+  },
+  {
+    "label": 1,
+    "subject": "Application Acknowledgment: Financial Analyst Position",
+    "body": "Dear [Applicant Name],\n\nWe wanted to inform you that we have received your application for the Financial Analyst position at [Company Name]. Our hiring team is currently assessing all applications, and if your skills align with our needs, we will be in touch for an interview. Thank you for your interest in joining our organization.\n\nSincerely,\n[Company Name] Talent Acquisition"
+  },
+  {
+    "label": 1,
+    "subject": "Thank You for Applying: Customer Support Representative Role",
+    "body": "Dear [Applicant Name],\n\nYour application for the Customer Support Representative role has been received. We appreciate your interest in joining our team at [Company Name]. Our recruitment team will carefully review your qualifications, and if there is a match, we will contact you to discuss the next steps. Thank you for considering a career with us.\n\nBest regards,\n[Company Name] Hiring Team"
+  },
+  {
+    "label": 1,
+    "subject": "Receipt of Application: Human Resources Assistant Position",
+    "body": "Dear [Applicant Name],\n\nThank you for submitting your application for the Human Resources Assistant position at [Company Name]. We have received your information and will be evaluating your candidacy in the coming weeks. If your qualifications align with our requirements, we will schedule an interview. We appreciate your interest in joining our HR team.\n\nWarm regards,\n[Company Name] Recruitment Team"
+  },
+  {
+    "label": 1,
+    "subject": "Application Confirmation: Graphic Designer Role",
+    "body": "Dear [Applicant Name],\n\nWe would like to confirm the receipt of your application for the Graphic Designer role at [Company Name]. Your portfolio and resume are under review, and we will be in touch if your skills match our needs. Thank you for considering [Company Name] as your potential workplace.\n\nSincerely,\n[Company Name] Design Team"
+  },
+  {
+    "label": 1,
+    "subject": "Thank You for Your Interest: Project Manager Position",
+    "body": "Dear [Applicant Name],\n\nThank you for showing interest in the Project Manager position at [Company Name]. We have received your application and are currently reviewing it. If your qualifications meet our criteria, we will reach out to you to discuss the next steps. We appreciate your commitment to excellence.\n\nBest regards,\n[Company Name] Hiring Committee"
+  },
+  {
+    "label": 1,
+    "subject": "Application Received: IT Support Specialist Role",
+    "body": "Dear [Applicant Name],\n\nWe want to inform you that we have received your application for the IT Support Specialist role. Our technical team is in the process of evaluating applications, and if your skills match our requirements, we will invite you for an interview. Thank you for considering [Company Name] as your potential employer.\n\nKind regards,\n[Company Name] IT Recruitment Team"
+  },
+  {
+    "label": 1,
+    "subject": "Acknowledgment of Application: Administrative Assistant Position",
+    "body": "Dear [Applicant Name],\n\nThank you for submitting your application for the Administrative Assistant position at [Company Name]. We have received your information and are currently reviewing it. If your qualifications align with our needs, we will be in touch for further discussions. We appreciate your interest in joining our team.\n\nSincerely,\n[Company Name] Administrative Recruitment Team"
+  },
+  {
+    "label": 1,
+    "subject": "Confirmation of Application: Sales Representative Role",
+    "body": "Dear [Applicant Name],\n\nWe acknowledge the receipt of your application for the Sales Representative position at [Company Name]. Your interest in contributing to our sales team is valued. We will carefully assess your application, and if you are shortlisted, we will contact you for the next steps. Thank you for considering a career with [Company Name].\n\nBest regards,\n[Company Name] Sales Recruitment Team"
+  }
+]
