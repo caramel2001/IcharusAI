@@ -40,6 +40,35 @@ class TrackFile:
         track_data.to_csv(self.file_path, index=False)
         return track_data
 
+    def add_record(
+        self,
+        title,
+        company,
+        stage,
+        date=str(pd.to_datetime("today").date()),
+        rejected=0,
+        logo="https://storage.googleapis.com/simplify-imgs/company/default/logo.png",
+        location="SG",
+        text=" ",
+    ):
+        track_data = self.read_file()
+        new_record = pd.DataFrame(
+            {
+                "text": [text],
+                "job": 1,
+                "title": [title],
+                "company": [company],
+                "stage": [stage],
+                "date": [date],
+                "rejected": [rejected],
+                "logo": [logo],
+                "location": [location],
+            }
+        )
+        track_data = pd.concat([new_record, track_data], axis=0)
+        track_data.to_csv(self.file_path, index=False)
+        return track_data
+
     def get_last_update_date(self):
         if os.path.exists(self.file_path):
             if not pd.isna(pd.read_csv(self.file_path)["date"].max()):
@@ -50,12 +79,12 @@ class TrackFile:
                 formatted_date = date.strftime("%d-%b-%Y")
                 return formatted_date
             else:
-                date = (pd.to_datetime("today") - pd.DateOffset(days=2)).date()
+                date = (pd.to_datetime("today") - pd.DateOffset(days=1)).date()
                 formatted_date = date.strftime("%d-%b-%Y")
                 return formatted_date
         else:
             # return date 1 week ago
-            date = (pd.to_datetime("today") - pd.DateOffset(days=2)).date()
+            date = (pd.to_datetime("today") - pd.DateOffset(days=1)).date()
             formatted_date = date.strftime("%d-%b-%Y")
             return formatted_date
 
