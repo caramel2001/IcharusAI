@@ -13,6 +13,7 @@ import Setup from "./views/setup";
 import Tracking from "./views/tracking";
 import Recommendation from "./views/recommendation";
 import NotFound from "./views/not-found";
+import Analytics from "./views/analytics";
 
 const App = () => {
   const [login, setLogin] = useState(false);
@@ -61,6 +62,7 @@ const App = () => {
           exact
           path="/recommendation"
         />
+        <Route component={Analytics} exact path="/analytics" />
         <Route component={NotFound} path="**" />
         <Redirect to="**" />
       </Switch>
