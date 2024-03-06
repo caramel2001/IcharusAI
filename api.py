@@ -67,8 +67,12 @@ def search_jobs(
     return {"job_recommendations": job_recommendations}
 
 @app.post("/explain-record/")
-def explain_record(    jd: str = Form(...),resume_text: str = Form(...), ai_service: str = Form("llama"),api_key: Optional[str] = Form(None)):
-    explain_data = explain_openai_gpt(jd_text=jd, res=resume_text, ai_service=ai_service, api_key=api_key)
+async def explain_record(    jd: str = Form(...),resume: UploadFile = File(...), ai_service: str = Form("llama"),api_key: Optional[str] = Form(None)):
+    temp_file_path = f"temp_{resume.filename}"
+    with open(temp_file_path, "wb") as buffer:
+        buffer.write(await resume.read())
+        
+    explain_data = explain_openai_gpt(jd_text=jd, res=temp_file_path, ai_service=ai_service, api_key=api_key)
     return explain_data
 
 @app.post("/download-models/")
