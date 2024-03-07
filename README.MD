@@ -1,4 +1,4 @@
-### Project.ipynb Files contains all the python scripts for Data collection, Data Processing, Generative AI and ML model Training and test and FastAPI backend
+### main_submission.ipynb Files contains all the python scripts for Data collection, Data Processing, Generative AI and ML model Training and test and FastAPI backend
 
 ## ChromaDB
 
