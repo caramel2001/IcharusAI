@@ -14,6 +14,7 @@ import Tracking from "./views/tracking";
 import Recommendation from "./views/recommendation";
 import NotFound from "./views/not-found";
 import Analytics from "./views/analytics";
+import Improve from "./views/improve";
 
 const App = () => {
   const [login, setLogin] = useState(false);
@@ -63,6 +64,10 @@ const App = () => {
           path="/recommendation"
         />
         <Route component={Analytics} exact path="/analytics" />
+        <Route component={(props) => (<Improve {...props} apiKey={apiKey} service={service} exact path="/improve" ></Improve>
+          
+        )} />
+
         <Route component={NotFound} path="**" />
         <Redirect to="**" />
       </Switch>

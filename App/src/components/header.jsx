@@ -35,7 +35,7 @@ export default function NavBar({login=true}) {
         <button onClick={() => history.push("/tracking")} className="text-sm font-semibold leading-6 text-gray-900">
            Job Tracking
           </button>
-          <button onClick={() => history.push("/")} className="text-sm font-semibold leading-6 text-gray-900">
+          <button onClick={() => history.push("/improve")} className="text-sm font-semibold leading-6 text-gray-900">
             Icarus Coach
           </button>
           <button onClick={() => history.push("/recommendation")} className="text-sm font-semibold leading-6 text-gray-900">
@@ -86,8 +86,9 @@ export default function NavBar({login=true}) {
                 >
                   Icarus Recommendations
                 </button>
-                <button
-                  onClick={() => history.push("/")}
+      
+                     <button
+                  onClick={() => history.push("/improve")}
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Icarus Coach

@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 import uvicorn
 import os
+from jobTracker.improve import improve_resume_with_ai
 
 # Assuming your Recommendation class is updated elsewhere in your project
 from jobTracker.recommendation import Recommendation
@@ -83,7 +84,16 @@ async def explain_record(    jd: str = Form(...),resume: UploadFile = File(...),
 
     return explain_data
 
+@app.post("/improve-record/")
+async def improve_record(    jd: str = Form(...),resume: UploadFile = File(...), ai_service: str = Form("llama"),api_key: Optional[str] = Form(None)):
+    print(ai_service,"ai_service called")
+    temp_file_path = f"temp_{resume.filename}"
+    with open(temp_file_path, "wb") as buffer:
+        buffer.write(await resume.read())
+        
+    improve_data = improve_resume_with_ai(jd_list=jd, resume_path=temp_file_path, ai_service=ai_service, api_key=api_key)
 
+    return improve_data
 @app.post("/download-models/")
 def create_track():
 
