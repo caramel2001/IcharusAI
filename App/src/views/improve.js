@@ -9,18 +9,17 @@ import JobDescriptionInput from "../components/jdinput";
 import "./recommendation.css";
 import { CircularProgress, Paper, Typography } from "@mui/material";
 
-
 const Input = styled("input")({
   display: "none",
 });
 
 const Improve = (props) => {
-    const apiKey = props.apiKey;
-    const service = props.service;
-    const [loading, setLoading] = useState(false); // New state for loading indicator
+  const apiKey = props.apiKey;
+  const service = props.service;
+  const [loading, setLoading] = useState(false); // New state for loading indicator
 
-    console.log(apiKey)
-    console.log(service)
+  console.log(apiKey);
+  console.log(service);
   const [file, setFile] = useState(null);
   const [data, setData] = useState({
     generated_jd: "No Description Generated",
@@ -41,7 +40,6 @@ const Improve = (props) => {
       return;
     }
     setLoading(true); // End loading
-
 
     const formData = new FormData();
     formData.append("resume", file);
@@ -65,7 +63,41 @@ const Improve = (props) => {
       console.error("There was an error!", error);
     }
     setLoading(false); // End loading
+  };
 
+  const handleSubmitPast = async (event) => {
+    event.preventDefault();
+
+    if (!file || !props.apiKey || props.service !== "openai") {
+      alert("Please select a file and enter your API key.");
+      return;
+    }
+    setLoading(true); // End loading
+
+    const formData = new FormData();
+    formData.append("resume", file);
+    formData.append("api_key", props.apiKey);
+    formData.append("ai_service", props.service);
+
+    try {
+      const response = await fetch(
+        "http://127.0.0.1:8000/improve-record-past/",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const resp = await response.json();
+      setResponse(resp);
+    } catch (error) {
+      console.error("There was an error!", error);
+    }
+    setLoading(false); // End loading
   };
 
   return (
@@ -74,7 +106,10 @@ const Improve = (props) => {
       <div className="recommendation-depth2-frame1">
         <div className="recommendation-depth3-frame01">
           <span className="recommendation-text02">Tailor your resume</span>
-          <JobDescriptionInput jobDescription={jobDescription} setJobDescription={setJobDescription} />
+          <JobDescriptionInput
+            jobDescription={jobDescription}
+            setJobDescription={setJobDescription}
+          />
           <div className="recommendation-depth4-frame3">
             <label htmlFor="contained-button-file">
               <Input
@@ -113,20 +148,40 @@ const Improve = (props) => {
             >
               Generate Improvement Suggestions
             </Button>
+
+            <Button
+              variant="contained"
+              component="span"
+              onClick={handleSubmitPast}
+              sx={{
+                backgroundColor: "lightgrey",
+                color: "black",
+                "&:hover": {
+                  backgroundColor: "darkgrey",
+                },
+              }}
+              startIcon={<AutoAwesomeIcon />}
+            >
+              Generate Improvement Suggestions based on Past History
+            </Button>
           </div>
           <div>{file ? file.name : "No files uploaded"}</div>
-            {loading ? (
-                <CircularProgress /> // Show loading indicator when API call is in progress
-            ) : (
-                <Paper elevation={3} style={{ padding: '20px', marginTop: '20px' }} className="rounded-lg">
-                    <Typography variant="h6" component="h3">
-                        Improvement Suggestions
-                    </Typography>
-                    <Typography component="p" style={{ marginTop: '10px' }} >
-                    <div style={{ whiteSpace: "pre-wrap" }}>{response}</div>
-                    </Typography>
-                </Paper>
-            )}
+          {loading ? (
+            <CircularProgress /> // Show loading indicator when API call is in progress
+          ) : (
+            <Paper
+              elevation={3}
+              style={{ padding: "20px", marginTop: "20px" }}
+              className="rounded-lg"
+            >
+              <Typography variant="h6" component="h3">
+                Improvement Suggestions
+              </Typography>
+              <Typography component="p" style={{ marginTop: "10px" }}>
+                <div style={{ whiteSpace: "pre-wrap" }}>{response}</div>
+              </Typography>
+            </Paper>
+          )}
         </div>
       </div>
     </div>

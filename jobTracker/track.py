@@ -4,6 +4,7 @@ import os
 from .gmail import Gmail
 from .job_classifier import JobClassifier
 from .job_stage import JobStageClassifier
+from .recommendation import Recommendation
 
 
 class TrackFile:
@@ -197,3 +198,23 @@ def delete_track_data(index):
     track_data["title"] = track_data["title"].fillna("")
     track_data["company"] = track_data["company"].fillna("")
     return track_data.to_dict(orient="records")
+
+
+def get_past_jds():
+    track = TrackFile().read_file()
+    track = track.dropna(subset=["text"])
+    if track.shape[0] <= 0:
+        return None
+    jds = track["text"][:5].sample(min(1, track.shape[0]))
+    chroma_jds = []
+    client = Recommendation(
+        resume="resume.docx",
+        ai_service="llama",
+    )
+    for jd in jds:
+        res = client.search_jd(jd, k=1)
+        chroma_jds.append(res["documents"][0][0])
+
+    print(len(chroma_jds), "\n")
+    jds = "\n".join(chroma_jds)
+    return jds

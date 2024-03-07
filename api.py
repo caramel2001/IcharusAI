@@ -12,6 +12,7 @@ from jobTracker.track import (
     get_track_data,
     delete_track_data,
     TrackFile,
+    get_past_jds,
 )
 from jobTracker.explain import explain_openai_gpt
 
@@ -74,26 +75,67 @@ def search_jobs(
 
 
 @app.post("/explain-record/")
-async def explain_record(    jd: str = Form(...),resume: UploadFile = File(...), ai_service: str = Form("llama"),api_key: Optional[str] = Form(None)):
-    print(ai_service,"ai_service called")
+async def explain_record(
+    jd: str = Form(...),
+    resume: UploadFile = File(...),
+    ai_service: str = Form("llama"),
+    api_key: Optional[str] = Form(None),
+):
+    print(ai_service, "ai_service called")
     temp_file_path = f"temp_{resume.filename}"
     with open(temp_file_path, "wb") as buffer:
         buffer.write(await resume.read())
-        
-    explain_data = explain_openai_gpt(jd_text=jd, res=temp_file_path, ai_service=ai_service, api_key=api_key)
 
+    explain_data = explain_openai_gpt(
+        jd_text=jd, res=temp_file_path, ai_service=ai_service, api_key=api_key
+    )
+    # Clean up the temporary file
+    os.remove(temp_file_path)
     return explain_data
 
+
 @app.post("/improve-record/")
-async def improve_record(    jd: str = Form(...),resume: UploadFile = File(...), ai_service: str = Form("llama"),api_key: Optional[str] = Form(None)):
-    print(ai_service,"ai_service called")
+async def improve_record(
+    jd: str = Form(...),
+    resume: UploadFile = File(...),
+    ai_service: str = Form("llama"),
+    api_key: Optional[str] = Form(None),
+):
+    print(ai_service, "ai_service called")
     temp_file_path = f"temp_{resume.filename}"
     with open(temp_file_path, "wb") as buffer:
         buffer.write(await resume.read())
-        
-    improve_data = improve_resume_with_ai(jd_list=jd, resume_path=temp_file_path, ai_service=ai_service, api_key=api_key)
 
+    improve_data = improve_resume_with_ai(
+        jd_list=jd, resume_path=temp_file_path, ai_service=ai_service, api_key=api_key
+    )
+    # Clean up the temporary file
+    os.remove(temp_file_path)
     return improve_data
+
+
+@app.post("/improve-record-past/")
+async def improve_record_past(
+    resume: UploadFile = File(...),
+    ai_service: str = Form("llama"),
+    api_key: Optional[str] = Form(None),
+):
+
+    print(ai_service, "ai_service called")
+    temp_file_path = f"temp_{resume.filename}"
+    with open(temp_file_path, "wb") as buffer:
+        buffer.write(await resume.read())
+    jds = get_past_jds()
+    if jds == None:
+        return "No past job descriptions found."
+    improve_data = improve_resume_with_ai(
+        jd_list=jds, resume_path=temp_file_path, ai_service=ai_service, api_key=api_key
+    )
+    # Clean up the temporary file
+    os.remove(temp_file_path)
+    return improve_data
+
+
 @app.post("/download-models/")
 def create_track():
 
