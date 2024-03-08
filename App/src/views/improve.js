@@ -35,7 +35,7 @@ const Improve = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!file || !props.apiKey || props.service !== "openai") {
+    if (!file || !props.apiKey || props.service === "openai") {
       alert("Please select a file and enter your API key.");
       return;
     }
